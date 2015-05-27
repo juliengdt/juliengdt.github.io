@@ -1,0 +1,71 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 06:59:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Memory Safety: Ensuring Values are Defined Before Use</title><description>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;</description><link>http://localhost:2368/swift-memory-safety/</link><guid isPermaLink="false">4146af78-9303-4a55-a1d7-5ff2a7b237e6</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 06:49:37 GMT</pubDate><content:encoded>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;
+
+&lt;h3 id="theswiftapproach"&gt;The Swift Approach&lt;/h3&gt;
+
+&lt;p&gt;Variables are considered "safe" when the developer can be sure that there will be a valid value ready to use before any code tries to access it. Languages take several different approaches to this kind of safety. Some, like C, put the burden entirely on the programmer to employ safe programming techniques — a powerful approach, but riddled with risk. C++ and Objective-C improve the situation by enforcing some mandatory patterns, while other languages take extreme measures by requiring initialization at the point of definition.&lt;/p&gt;
+
+&lt;p&gt;The primary technique employed by Swift is to use our advanced compiler to perform dataflow analysis of the code. The compiler then enforces that each variable was initialized before it is used, a strategy known as [Definitive Initialization][1]. Languages such as Java and C# (among others) are known to also employ this technique. Swift uses an extended version of this approach for a broad range of variables.&lt;/p&gt;
+
+&lt;p&gt;Note: The bottom of this post includes information about other techniques, most of which Swift also employs to some degree.&lt;/p&gt;
+
+&lt;h3 id="definitiveinitializationoflocalvariables"&gt;Definitive Initialization of Local Variables&lt;/h3&gt;
+
+&lt;p&gt;Swift applies the rules of definitive initialization in many contexts, but the simplest use is for local variables. Definitive initialization gives you more flexibility than a "implicit default initialization" rule (&lt;em&gt;see below&lt;/em&gt;) would, because it allows you to write this code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myInstance : MyClass
+
+if x &amp;gt; 42 {
+    myInstance = MyClass(intValue: 13)
+} else {
+    myInstance = MyClass(floatValue: 92.3)
+}
+
+myInstance.printIt()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here the compiler can prove that both sides of the if statement are guaranteed to initialize myInstance, which proves that the method call can't use uninitialized memory.&lt;/p&gt;
+
+&lt;p&gt;Definitive initialization is a powerful approach, but it is only really useful if it is reliable and predictable. One place that this can lead to surprise is when you have more complex control flow, for example like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myInstance : MyClass
+
+if x &amp;gt; 10 {
+    myInstance = MyClass(intValue: 13)
+}
+
+if x &amp;gt; 42 {
+    myInstance.printIt()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case, the compiler will tell you: "Variable &lt;strong&gt;myInstance&lt;/strong&gt; used before initialized" on the call to printIt(). This is because the compiler does not track the correlation between the predicates in the if conditions. While we could teach the compiler to handle individual specific cases like this one, it is impossible to handle all cases (doing so is equivalent to the [halting problem][2]) so we opted to keep the compiler's rules simple and predictable.&lt;/p&gt;
+
+&lt;p&gt;Swift makes it extremely easy to initialize a variable. In fact, it is shorter to declare a variable as var x = 0 giving the variable the initial value 0 than it is to declare the uninitialized variable var x : Int. Swift favors explicitness of initialization whenever possible. There are also more powerful ways to initialize a variable when the situation calls for it using init(). For comprehensive information you can read the chapter "[Initialization][3]" in The Swift Programming Language.&lt;/p&gt;
+
+&lt;h3 id="otherapproaches"&gt;Other Approaches&lt;/h3&gt;
+
+&lt;p&gt;In addition to definitive initialization, Swift also employs additional approaches in focused areas of the language. You may have used these techniques in other languages, so we wanted to cover them briefly in this post. Each has some drawbacks, so they aren't used as Swift's primary approach:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Leave safety to the programmer:&lt;/strong&gt; Given the prevalence of C, it was important to understand the pros and cons of simply leaving safety up to the developer. Unfortunately, use of an uninitialized value in C produces [undefined behavior][4], often leading to runtime explosions. C relies on the programmer to never make a mistake. Given that our goal was to make Swift "safe by default," this approach was quickly discarded for general use. However, APIs like UnsafePointer allow you to explicitly opt-in to unsafety when this power is absolutely necessary.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Implicit Default Initialization:&lt;/strong&gt; Values could be ensured to be safe by having the compiler implicitly initialize them, for example by setting a "zero value" like Objective-C does for instance variables, or by running default initializers like in C++. We explored this approach in depth, but ultimately decided against its broad use because:
+* This doesn't work for cases that have no legal initial value, e.g. protocols with no init() requirement, and non-nullable references to classes, which are pervasive in Swift.
+* Even for primitive types like integers 0 is often the wrong value. That's one reason setting the initial value is so easy in Swift. This also makes the code more obvious for those who will maintain it, as well as defining away a potential error of omission, e.g. when -1 is the right sentinel to use.&lt;/p&gt;
+
+&lt;p&gt;Note that default initialization to nil is clearly the right answer for nullable values so all values of Optional and ImplicitlyUnwrappedOptional type automatically initialize to nil by default.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Require an initializer at definition.&lt;/strong&gt; Put the burden on the developer to always provide an initial value at the time the variable is defined, meaning that var x : Int would be illegal without an initializer. While this is a common approach among functional languages, we considered this to be too heavy of a requirement because it enforces a very strict programming style, which gets in the way of expressing natural patterns.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Definite_assignment_analysis"&gt;1&lt;/a&gt;
+&lt;a href="http://en.wikipedia.org/wiki/Halting_problem"&gt;2&lt;/a&gt;
+&lt;a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html"&gt;3&lt;/a&gt;
+&lt;a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html"&gt;4&lt;/a&gt;
+&lt;a href="http://developer.apple.com/swift/blog/#article-28"&gt;5&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://developer.apple.com/swift/blog/?id=28" title="Permalink to Memory Safety: Ensuring Values are Defined Before Use - Swift Blog"&gt;Source&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Soon ...</title><description>&lt;p&gt;Yo, just have to write bunches of articles but ... soon ... &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://cdn.themetapicture.com/media/funny-cat-soon-hide-carpet.jpg" alt="Soon"&gt;&lt;/p&gt;</description><link>http://localhost:2368/soon-page/</link><guid isPermaLink="false">bfa7922d-4646-4804-bc6d-14272691dbde</guid><category>Getting Started</category><dc:creator>Julien Gdt</dc:creator><pubDate>Tue, 26 May 2015 08:04:15 GMT</pubDate><content:encoded>&lt;p&gt;Yo, just have to write bunches of articles but ... soon ... &lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://cdn.themetapicture.com/media/funny-cat-soon-hide-carpet.jpg" alt="Soon"&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
