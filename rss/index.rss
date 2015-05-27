@@ -1,4 +1,134 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 10:39:21 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Swift Style Guide</title><description>&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on&lt;/p&gt;</description><link>http://localhost:2368/swift-style-guide/</link><guid isPermaLink="false">f7733e36-6afa-4605-8a72-adec02deedfb</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 07:31:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" alt="Swift Style Guide"&gt;&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 10:46:11 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Resume</title><description>iOS Developer Resume - Julien Goudet - Lyon France - julien gdt - jlngdt</description><link>http://localhost:2368/resume/</link><guid isPermaLink="false">1b2c499b-682c-474e-a333-9a3d36637017</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 08:45:58 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/DM4C7350.jpg" medium="image"/><content:encoded>&lt;h1 id="juliengoudet"&gt;Julien Goudet&lt;/h1&gt;
+
+&lt;h2 id="2yearsiosdeveloperdigitalbank"&gt;2 years iOS Developer - Digital Bank&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;img src="http://localhost:2368/content/images/2015/05/DM4C7350.jpg" alt="Resume"&gt;&lt;p&gt;Offline Resume: &lt;a href="http://localhost:2368/resume/"&gt;Download PDF (Soon)&lt;/a&gt;  &lt;/p&gt;
+  
+  &lt;p&gt;Mail: &lt;a href="mailto:juliengdt@icloud.com?subject=Hello, i just saw your Ghost Blog !"&gt;juliengdt@icloud.com&lt;/a&gt; &lt;/p&gt;
+  
+  &lt;p&gt;Phone: &lt;a href="tel:+33646099017"&gt;+33646099017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/jlngdt"&gt;&lt;img src="http://localhost:2368/content/images/static/twitter_icon.png" alt="Resume" title=""&gt;&lt;/a&gt; &lt;a href="https://github.com/juliengdt"&gt;&lt;img src="http://localhost:2368/content/images/static/github_icon.png" alt="Resume" title=""&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="profileprofile"&gt;Profile {#profile}&lt;/h3&gt;
+
+&lt;p&gt;Born with a Sega MegaDrive and the first mobile phones, my main aim in my pro life is to build something unique, something I want to be proud of, something respectable. I love my job, coding bunches of lines, ViewControllers and great iPhone apps. &lt;/p&gt;
+
+&lt;p&gt;With 2 years of experience in iOS Objective-C (and Swift now), I'm always looking for great mobile projects to participate in. &lt;/p&gt;
+
+&lt;p&gt;And this is me:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/static/jlngdt_rounded.png" alt="Resume"&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="skillsskills"&gt;Skills {#skills}&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;iOS Development&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Objective-C &amp;amp; Swift (1.2)&lt;/li&gt;
+&lt;li&gt;AFNetworking + JSONModel = &amp;lt;3&lt;/li&gt;
+&lt;li&gt;Framework usage&lt;/li&gt;
+&lt;li&gt;Framework management like Cocoapods (Obj-C) and Carthage (Swift)&lt;/li&gt;
+&lt;li&gt;Framework Packaging (with or without UI inside)&lt;/li&gt;
+&lt;li&gt;iOS Mobile Security Coding (Trusted certificates, OWASP compliance, SSL, local handshake, local keychains ... etc)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mobile Development&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Android (enough understood to troll my Android binom)&lt;/li&gt;
+&lt;li&gt;Git or Mercurial usage (git hooks usage)&lt;/li&gt;
+&lt;li&gt;Team Versioning (Merge/Pull Request)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Backend debugging/backup&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Basics manipulations: server start/stop, grep logs, find java exceptions and have a look at the source code.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Interface Design&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Advanced Mobile UI&lt;/li&gt;
+&lt;li&gt;Photoshop (Basics and more)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Project Spirit&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Scrum/Agile methods&lt;/li&gt;
+&lt;li&gt;External Testing with clients&lt;/li&gt;
+&lt;li&gt;JIRA usage for bug-tracking and time-tracking&lt;/li&gt;
+&lt;li&gt;Can easily be in contact with end clients (kick-off/daily meetings, bills)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="technicallinkstechnicallinks"&gt;Technical Links {#technicallinks}&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/AFNetworking/AFNetworking"&gt;AFNetworking 2.0&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/icanzilb/JSONModel"&gt;JSONModel&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Carthage/Carthage"&gt;Carthage - Swift Package Manager&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alamofire/Alamofire"&gt;Alamofire - Swift Networking&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/realm/jazzy"&gt;Jazzy - Swift Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tomaz/appledoc"&gt;Appledoc - Obj-C Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/zwaldowski/BlocksKit"&gt;BlocksKit&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.atlassian.com/software/jira"&gt;Atlassian JIRA&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://about.gitlab.com/"&gt;Gitlab&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="experienceexperience"&gt;Experience {#experience}&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://worldline.com/en-us/home/about-us.html"&gt;Worldline, an Atos Company&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;iOS Developer&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Paylib Solution &lt;a href="http://www.paylib.fr/"&gt;(website)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;La Banque Postale wallet application &lt;a href="https://itunes.apple.com/fr/app/mes-paiements/id699406767?mt=8"&gt;(Mes Paiements)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;BNP Paribas iOS wallet applications &lt;a href="https://itunes.apple.com/us/app/mon-portefeuille-hello-bank!/id705889374?l=fr&amp;amp;ls=1&amp;amp;mt=8"&gt;(1)&lt;/a&gt; &amp;amp; &lt;a href="https://itunes.apple.com/fr/app/mon-portefeuille-bnp-paribas/id676059019?mt=8"&gt;(2)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Participate in Société Générale iOS app &lt;a href="https://itunes.apple.com/fr/app/lappli-societe-generale-pour/id376991016?mt=8"&gt;(L'appli)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://www.egdigital.fr/"&gt;EG Digital&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;iOS Intern Developer&lt;/em&gt; &lt;strong&gt;2012-2012&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Euronews App (iPad UI) &lt;a href="https://itunes.apple.com/fr/app/euronews/id555667472?mt=8"&gt;(Euronews)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jazz Radio - iOS Streaming app &lt;a href="https://itunes.apple.com/fr/app/jazz-radio/id608871294?mt=8"&gt;Jazz Radio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="educationeducation"&gt;Education {#education}&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://esirem.u-bourgogne.fr/"&gt;ESIREM&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;InfoTronic Engineer&lt;/em&gt; &lt;strong&gt;2011-2013&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mobile development&lt;/li&gt;
+&lt;li&gt;Electronic development&lt;/li&gt;
+&lt;li&gt;Embedded Linux&lt;/li&gt;
+&lt;li&gt;Embedded System&lt;/li&gt;
+&lt;li&gt;ElectroMagnetism&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://www.polytech-grenoble.fr/3i.html"&gt;Polytech Grenoble&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;Informatic Engineer&lt;/em&gt; &lt;strong&gt;2010-2011&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Embedded Linux&lt;/li&gt;
+&lt;li&gt;Embedded System&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://lyc21-eiffel.ac-dijon.fr/fr/formsup/ats/formation/"&gt;ATS&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;Preparatory Course - Mathematics&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/resume/"&gt;Advanced Diploma in Electronics&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;BAC+BTS (french main diploma + 2 years) in electronics&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="footerfooter"&gt;Footer {#footer}&lt;/h3&gt;
+
+&lt;p&gt;Julien Goudet -- &lt;a href="http://localhost:2368/resume/juliengdt@icloud.com"&gt;juliengdt@icloud.com&lt;/a&gt; -- (+33) 0646099017&lt;/p&gt;
+
+&lt;hr&gt;</content:encoded></item><item><title>Swift Style Guide</title><description>&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on&lt;/p&gt;</description><link>http://localhost:2368/swift-style-guide/</link><guid isPermaLink="false">f7733e36-6afa-4605-8a72-adec02deedfb</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 07:31:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" alt="Swift Style Guide"&gt;&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.&lt;/p&gt;
 
 &lt;p&gt;Our overarching goals are conciseness, readability, and simplicity.&lt;/p&gt;
 
