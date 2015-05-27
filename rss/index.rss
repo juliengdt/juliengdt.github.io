@@ -1,4 +1,586 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 06:59:12 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Memory Safety: Ensuring Values are Defined Before Use</title><description>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;</description><link>http://localhost:2368/swift-memory-safety/</link><guid isPermaLink="false">4146af78-9303-4a55-a1d7-5ff2a7b237e6</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 06:49:37 GMT</pubDate><content:encoded>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 07:32:22 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Swift Style Guide</title><description>&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on&lt;/p&gt;</description><link>http://localhost:2368/swift-style-guide/</link><guid isPermaLink="false">f7733e36-6afa-4605-8a72-adec02deedfb</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 07:31:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" alt="Swift Style Guide"&gt;&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.&lt;/p&gt;
+
+&lt;p&gt;Our overarching goals are conciseness, readability, and simplicity.&lt;/p&gt;
+
+&lt;p&gt;Writing Objective-C? Check out our &lt;a href="https://github.com/raywenderlich/objective-c-style-guide"&gt;Objective-C Style Guide&lt;/a&gt; too.&lt;/p&gt;
+
+&lt;h2 id="tableofcontents"&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#naming"&gt;Naming&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#prose"&gt;Prose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#class-prefixes"&gt;Class Prefixes&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#spacing"&gt;Spacing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#comments"&gt;Comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#classes-and-structures"&gt;Classes and Structures&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#use-of-self"&gt;Use of Self&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#protocol-conformance"&gt;Protocol Conformance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#computed-properties"&gt;Computed Properties&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#function-declarations"&gt;Function Declarations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#closure-expressions"&gt;Closure Expressions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#types"&gt;Types&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#constants"&gt;Constants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#optionals"&gt;Optionals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#struct-initializers"&gt;Struct Initializers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#type-inference"&gt;Type Inference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#syntactic-sugar"&gt;Syntactic Sugar&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#control-flow"&gt;Control Flow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#semicolons"&gt;Semicolons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#language"&gt;Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#smiley-face"&gt;Smiley Face&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#credits"&gt;Credits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="naming"&gt;Naming&lt;/h2&gt;
+
+&lt;p&gt;Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;private let maximumWidgetCount = 100
+
+class WidgetContainer {  
+  var widgetButton: UIButton
+  let widgetHeightPercentage = 0.85
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let MAX_WIDGET_COUNT = 100
+
+class app_widgetContainer {  
+  var wBut: UIButton
+  let wHeightPct = 0.85
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func dateFromString(dateString: String) -&amp;gt; NSDate  
+func convertPointAt(#column: Int, #row: Int) -&amp;gt; CGPoint  
+func timedAction(#delay: NSTimeInterval, perform action: SKAction) -&amp;gt; SKAction!
+
+// would be called like this:
+dateFromString("2014-03-14")  
+convertPointAt(column: 42, row: 13)  
+timedAction(delay: 1.0, perform: someOtherAction)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For methods, follow the standard Apple convention of referring to the first parameter in the method name:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class Guideline {  
+  func combineWithString(incoming: String, options: Dictionary?) { ... }
+  func upvoteBy(amount: Int) { ... }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="enumerations"&gt;Enumerations&lt;/h3&gt;
+
+&lt;p&gt;Use UpperCamelCase for enumeration values:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;enum Shape {  
+  case Rectangle
+  case Square
+  case Triangle
+  case Circle
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="prose"&gt;Prose&lt;/h3&gt;
+
+&lt;p&gt;When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or &lt;code&gt;_&lt;/code&gt; for unnamed parameters.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Call &lt;code&gt;convertPointAt(column:row:)&lt;/code&gt; from your own &lt;code&gt;init&lt;/code&gt; implementation.&lt;/p&gt;
+  
+  &lt;p&gt;If you call &lt;code&gt;dateFromString(_:)&lt;/code&gt; make sure that you provide a string with the format "yyyy-MM-dd".&lt;/p&gt;
+  
+  &lt;p&gt;If you call &lt;code&gt;timedAction(delay:perform:)&lt;/code&gt; from &lt;code&gt;viewDidLoad()&lt;/code&gt; remember to provide an adjusted delay value and an action to perform.&lt;/p&gt;
+  
+  &lt;p&gt;You shouldn't call the data source method &lt;code&gt;tableView(_:cellForRowAtIndexPath:)&lt;/code&gt; directly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/05/xcode-jump-bar.png" alt="Swift Style Guide"&gt;&lt;/p&gt;
+
+&lt;h3 id="classprefixes"&gt;Class Prefixes&lt;/h3&gt;
+
+&lt;p&gt;Swift types are automatically namespaced by the module that contains them and you should not add a class prefix. If two names from different modules collide you can disambiguate by prefixing the type name with the module name.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;import SomeModule
+
+let myClass = MyModule.UsefulClass()  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="spacing"&gt;Spacing&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/05/indentation.png" alt="Swift Style Guide" title=""&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Method braces and other braces (&lt;code&gt;if&lt;/code&gt;/&lt;code&gt;else&lt;/code&gt;/&lt;code&gt;switch&lt;/code&gt;/&lt;code&gt;while&lt;/code&gt; etc.) always open on the same line as the statement but close on a new line.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if user.isHappy {  
+  // Do something
+} else {
+  // Do something else
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if user.isHappy  
+{
+    // Do something
+}
+else {  
+    // Do something else
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="comments"&gt;Comments&lt;/h2&gt;
+
+&lt;p&gt;When they are needed, use comments to explain &lt;strong&gt;why&lt;/strong&gt; a particular piece of code does something. Comments must be kept up-to-date or deleted.&lt;/p&gt;
+
+&lt;p&gt;Avoid block comments inline with code, as the code should be as self-documenting as possible. &lt;em&gt;Exception: This does not apply to those comments used to generate documentation.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id="classesandstructures"&gt;Classes and Structures&lt;/h2&gt;
+
+&lt;h3 id="whichonetouse"&gt;Which one to use?&lt;/h3&gt;
+
+&lt;p&gt;Remember, structs have &lt;a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_144"&gt;value semantics&lt;/a&gt;. Use structs for things that do not have an identity. An array that contains [a, b, c] is really the same as another array that contains [a, b, c] and they are completely interchangeable. It doesn't matter whether you use the first array or the second, because they represent the exact same thing. That's why arrays are structs.&lt;/p&gt;
+
+&lt;p&gt;Classes have &lt;a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_145"&gt;reference semantics&lt;/a&gt;. Use classes for things that do have an identity or a specific life cycle. You would model a person as a class because two person objects are two different things. Just because two people have the same name and birthdate, doesn't mean they are the same person. But the person's birthdate would be a struct because a date of 3 March 1950 is the same as any other date object for 3 March 1950. The date itself doesn't have an identity.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, things should be structs but need to conform to &lt;code&gt;AnyObject&lt;/code&gt; or are historically modeled as classes already (&lt;code&gt;NSDate&lt;/code&gt;, &lt;code&gt;NSSet&lt;/code&gt;). Try to follow these guidelines as closely as possible.&lt;/p&gt;
+
+&lt;h3 id="exampledefinition"&gt;Example definition&lt;/h3&gt;
+
+&lt;p&gt;Here's an example of a well-styled class definition:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class Circle: Shape {  
+  var x: Int, y: Int
+  var radius: Double
+  var diameter: Double {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
+
+  init(x: Int, y: Int, radius: Double) {
+    self.x = x
+    self.y = y
+    self.radius = radius
+  }
+
+  convenience init(x: Int, y: Int, diameter: Double) {
+    self.init(x: x, y: y, radius: diameter / 2)
+  }
+
+  func describe() -&amp;gt; String {
+    return "I am a circle at \(centerString()) with an area of \(computeArea())"
+  }
+
+  override func computeArea() -&amp;gt; Double {
+    return M_PI * radius * radius
+  }
+
+  private func centerString() -&amp;gt; String {
+    return "(\(x),\(y))"
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The example above demonstrates the following style guidelines:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. &lt;code&gt;x: Int&lt;/code&gt;, and &lt;code&gt;Circle: Shape&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Define multiple variables and structures on a single line if they share a common purpose / context.&lt;/li&gt;
+&lt;li&gt;Indent getter and setter definitions and property observers.&lt;/li&gt;
+&lt;li&gt;Don't add modifiers such as &lt;code&gt;internal&lt;/code&gt; when they're already the default. Similarly, don't repeat the access modifier when overriding a method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="useofself"&gt;Use of Self&lt;/h3&gt;
+
+&lt;p&gt;For conciseness, avoid using &lt;code&gt;self&lt;/code&gt; since Swift does not require it to access an object's properties or invoke its methods.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code&gt;self&lt;/code&gt; when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class BoardLocation {  
+  let row: Int, column: Int
+
+  init(row: Int, column: Int) {
+    self.row = row
+    self.column = column
+
+    let closure = {
+      println(self.row)
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="protocolconformance"&gt;Protocol Conformance&lt;/h3&gt;
+
+&lt;p&gt;When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.&lt;/p&gt;
+
+&lt;p&gt;Also, don't forget the &lt;code&gt;// MARK: -&lt;/code&gt; comment to keep things well-organized!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class MyViewcontroller: UIViewController {  
+  // class stuff here
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {  
+  // table view data source methods
+}
+
+// MARK: - UIScrollViewDelegate
+extension MyViewcontroller: UIScrollViewDelegate {  
+  // scroll view delegate methods
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {  
+  // all methods
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="computedproperties"&gt;Computed Properties&lt;/h3&gt;
+
+&lt;p&gt;For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var diameter: Double {  
+  return radius * 2
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var diameter: Double {  
+  get {
+    return radius * 2
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="functiondeclarations"&gt;Function Declarations&lt;/h2&gt;
+
+&lt;p&gt;Keep short function declarations on one line including the opening brace:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func reticulateSplines(spline: [Double]) -&amp;gt; Bool {  
+  // reticulate code goes here
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func reticulateSplines(spline: [Double], adjustmentFactor: Double,  
+    translateConstant: Int, comment: String) -&amp;gt; Bool {
+  // reticulate code goes here
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="closureexpressions"&gt;Closure Expressions&lt;/h2&gt;
+
+&lt;p&gt;Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;UIView.animateWithDuration(1.0) {  
+  self.myView.alpha = 0
+}
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  },
+  completion: { finished in
+    self.myView.removeFromSuperview()
+  }
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;UIView.animateWithDuration(1.0, animations: {  
+  self.myView.alpha = 0
+})
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  }) { f in
+    self.myView.removeFromSuperview()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For single-expression closures where the context is clear, use implicit returns:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;attendeeList.sort { a, b in  
+  a &amp;gt; b
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="types"&gt;Types&lt;/h2&gt;
+
+&lt;p&gt;Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let width = 120.0                                    // Double  
+let widthString = (width as NSNumber).stringValue    // String  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let width: NSNumber = 120.0                          // NSNumber  
+let widthString: NSString = width.stringValue        // NSString  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Sprite Kit code, use &lt;code&gt;CGFloat&lt;/code&gt; if it makes the code more succinct by avoiding too many conversions.&lt;/p&gt;
+
+&lt;h3 id="constants"&gt;Constants&lt;/h3&gt;
+
+&lt;p&gt;Constants are defined using the &lt;code&gt;let&lt;/code&gt; keyword, and variables with the &lt;code&gt;var&lt;/code&gt; keyword. Always use &lt;code&gt;let&lt;/code&gt; instead of &lt;code&gt;var&lt;/code&gt; if the value of the variable will not change.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; A good technique is to define everything using &lt;code&gt;let&lt;/code&gt; and only change it to &lt;code&gt;var&lt;/code&gt; if the compiler complains!&lt;/p&gt;
+
+&lt;h3 id="optionals"&gt;Optionals&lt;/h3&gt;
+
+&lt;p&gt;Declare variables and function return types as optional with &lt;code&gt;?&lt;/code&gt; where a nil value is acceptable.&lt;/p&gt;
+
+&lt;p&gt;Use implicitly unwrapped types declared with &lt;code&gt;!&lt;/code&gt; only for instance variables that you know will be initialized later before use, such as subviews that will be set up in &lt;code&gt;viewDidLoad&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;self.textContainer?.textLabel?.setNeedsDisplay()  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use optional binding when it's more convenient to unwrap once and perform multiple operations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if let textContainer = self.textContainer {  
+  // do many things with textContainer
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When naming optional variables and properties, avoid naming them like &lt;code&gt;optionalString&lt;/code&gt; or &lt;code&gt;maybeView&lt;/code&gt; since their optional-ness is already in the type declaration.&lt;/p&gt;
+
+&lt;p&gt;For optional binding, shadow the original name when appropriate rather than using names like &lt;code&gt;unwrappedView&lt;/code&gt; or &lt;code&gt;actualLabel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var subview: UIView?  
+var volume: Double?
+
+// later on...
+if let subview = subview, volume = volume {  
+  // do something with unwrapped subview and volume
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var optionalSubview: UIView?  
+var volume: Double?
+
+if let unwrappedSubview = optionalSubview {  
+  if let realVolume = volume {
+    // do something with unwrappedSubview and realVolume
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="structinitializers"&gt;Struct Initializers&lt;/h3&gt;
+
+&lt;p&gt;Use the native Swift struct initializers rather than the legacy CGGeometry constructors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)  
+let centerPoint = CGPoint(x: 96, y: 42)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let bounds = CGRectMake(40, 20, 120, 80)  
+let centerPoint = CGPointMake(96, 42)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prefer the struct-scope constants &lt;code&gt;CGRect.infiniteRect&lt;/code&gt;, &lt;code&gt;CGRect.nullRect&lt;/code&gt;, etc. over global constants &lt;code&gt;CGRectInfinite&lt;/code&gt;, &lt;code&gt;CGRectNull&lt;/code&gt;, etc. For existing variables, you can use the shorter &lt;code&gt;.zeroRect&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id="typeinference"&gt;Type Inference&lt;/h3&gt;
+
+&lt;p&gt;Prefer compact code and let the compiler infer the type for a constant or variable, unless you need a specific type other than the default such as &lt;code&gt;CGFloat&lt;/code&gt; or &lt;code&gt;Int16&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let message = "Click the button"  
+let currentBounds = computeViewBounds()  
+var names = [String]()  
+let maximumWidth: CGFloat = 106.5  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let message: String = "Click the button"  
+let currentBounds: CGRect = computeViewBounds()  
+var names: [String] = []  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Following this guideline means picking descriptive names is even more important than before.&lt;/p&gt;
+
+&lt;h3 id="syntacticsugar"&gt;Syntactic Sugar&lt;/h3&gt;
+
+&lt;p&gt;Prefer the shortcut versions of type declarations over the full generics syntax.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var deviceModels: [String]  
+var employees: [Int: String]  
+var faxNumber: Int?  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var deviceModels: Array&amp;lt;String&amp;gt;  
+var employees: Dictionary&amp;lt;Int, String&amp;gt;  
+var faxNumber: Optional&amp;lt;Int&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="controlflow"&gt;Control Flow&lt;/h2&gt;
+
+&lt;p&gt;Prefer the &lt;code&gt;for-in&lt;/code&gt; style of &lt;code&gt;for&lt;/code&gt; loop over the &lt;code&gt;for-condition-increment&lt;/code&gt; style.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;for _ in 0..&amp;lt;3 {  
+  println("Hello three times")
+}
+
+for (index, person) in enumerate(attendeeList) {  
+  println("\(person) is at position #\(index)")
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;for var i = 0; i &amp;lt; 3; i++ {  
+  println("Hello three times")
+}
+
+for var i = 0; i &amp;lt; attendeeList.count; i++ {  
+  let person = attendeeList[i]
+  println("\(person) is at position #\(i)")
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="semicolons"&gt;Semicolons&lt;/h2&gt;
+
+&lt;p&gt;Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.&lt;/p&gt;
+
+&lt;p&gt;Do not write multiple statements on a single line separated with semicolons.&lt;/p&gt;
+
+&lt;p&gt;The only exception to this rule is the &lt;code&gt;for-conditional-increment&lt;/code&gt; construct, which requires semicolons. However, alternative &lt;code&gt;for-in&lt;/code&gt; constructs should be used where possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let swift = "not a scripting language"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let swift = "not a scripting language";  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Swift is very different to JavaScript, where omitting semicolons is &lt;a href="http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript"&gt;generally considered unsafe&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="language"&gt;Language&lt;/h2&gt;
+
+&lt;p&gt;Use US English spelling to match Apple's API.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let color = "red"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let colour = "red"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="smileyface"&gt;Smiley Face&lt;/h2&gt;
+
+&lt;p&gt;Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket &lt;code&gt;]&lt;/code&gt; is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis &lt;code&gt;)&lt;/code&gt; creates a half-hearted smile, and thus is not preferred.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="creditsandsources"&gt;Credits and sources&lt;/h2&gt;
+
+&lt;p&gt;This style guide is a collaborative effort from the most stylish raywenderlich.com team members: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/jawwad"&gt;Jawwad Ahmad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/moayes"&gt;Soheil Moayedi Azarpour&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Scott90"&gt;Scott Berrevoets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ecerney"&gt;Eric Cerney&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sammyd"&gt;Sam Davies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/edekhayser"&gt;Evan Dekhayser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pdistler"&gt;Jean-Pierre Distler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ColinEberhardt"&gt;Colin Eberhardt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gregheo"&gt;Greg Heo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hollance"&gt;Matthijs Hollemans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/eskerber"&gt;Erik Kerber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/elephantronic"&gt;Christopher LaPollo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/benmorrow"&gt;Ben Morrow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/macandyp"&gt;Andy Pereira&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rnystrom"&gt;Ryan Nystrom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/funkyboy"&gt;Cesare Rocchi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/designatednerd"&gt;Ellen Shapiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/icanzilb"&gt;Marin Todorov&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cwagdev"&gt;Chris Wagner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rwenderlich"&gt;Ray Wenderlich&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jackwu95"&gt;Jack Wu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hat tip to &lt;a href="https://github.com/ndubbs"&gt;Nicholas Waynik&lt;/a&gt; and the &lt;a href="https://github.com/raywenderlich/objective-c-style-guide"&gt;Objective-C Style Guide&lt;/a&gt; team!&lt;/p&gt;
+
+&lt;p&gt;We also drew inspiration from Apple’s reference material on Swift:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html"&gt;The Swift Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html"&gt;Using Swift with Cocoa and Objective-C&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html"&gt;Swift Standard Library Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;--&gt; &lt;a href="https://github.com/raywenderlich/swift-style-guide"&gt;SOURCES&lt;/a&gt; &amp;lt;--&lt;/p&gt;</content:encoded></item><item><title>Memory Safety: Ensuring Values are Defined Before Use</title><description>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;</description><link>http://localhost:2368/swift-memory-safety/</link><guid isPermaLink="false">4146af78-9303-4a55-a1d7-5ff2a7b237e6</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 06:49:37 GMT</pubDate><content:encoded>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;
 
 &lt;h3 id="theswiftapproach"&gt;The Swift Approach&lt;/h3&gt;
 
