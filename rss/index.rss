@@ -1,4 +1,155 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 27 May 2015 10:56:49 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>Resume</title><description>iOS Developer Resume - Julien Goudet - Lyon France - julien gdt - jlngdt</description><link>http://localhost:2368/resume/</link><guid isPermaLink="false">1b2c499b-682c-474e-a333-9a3d36637017</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 08:45:58 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/DM4C7350.jpg" medium="image"/><content:encoded>&lt;h1 id="juliengoudet"&gt;Julien Goudet&lt;/h1&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Fri, 05 Jun 2015 06:48:02 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>TOP 10 Mobile Security Threats - OWASP</title><description>&lt;p&gt;This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the &lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/"&gt;https://www.owasp.org/index.php/OWASP&lt;em&gt;Mobile&lt;/em&gt;Security_Project OWASP Mobile Top 10 Risks&lt;/a&gt; list.&lt;/p&gt;</description><link>http://localhost:2368/top-10-mobile-security-threats-owasp/</link><guid isPermaLink="false">2e22097f-f555-4d76-b9ac-8a8ab8d67a7d</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Fri, 05 Jun 2015 06:47:46 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29.png" alt="TOP 10 Mobile Security Threats - OWASP"&gt;&lt;p&gt;This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the &lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/"&gt;https://www.owasp.org/index.php/OWASP&lt;em&gt;Mobile&lt;/em&gt;Security_Project OWASP Mobile Top 10 Risks&lt;/a&gt; list.&lt;/p&gt;
+
+&lt;h3 id="basics"&gt;Basics&lt;/h3&gt;
+
+&lt;p&gt;From a user perspective, two of the best things one can do to protect her iOS device are: enable strong passwords, and [https://www.owasp.org/index.php/Mobile&lt;em&gt;Jailbreaking&lt;/em&gt;Cheat_Sheet refrain from jailbreaking the device]. For developers, both of these issues are problematic, as they are not verifiable within an app’s sandbox environment. (Apple previously had an API for testing devices to see if they are jailbroken, but that API was deprecated in 2010.) For enterprises, strong passwords, along with dozens of other security configuration attributes can be managed and enforced via a Mobile Device Management (MDM) product. Small businesses and individuals with multiple devices can use Apple’s iPhone Configuration Utility (&lt;a href="http://www.apple.com/support/iphone/enterprise/"&gt;http://www.apple.com/support/iphone/enterprise/&lt;/a&gt;) and Apple Configurator (available in the Mac App Store) to build secure configuration profiles and deploy them on multiple devices.&lt;/p&gt;
+
+&lt;h3 id="remediationstoowaspmobiletop10risks"&gt;Remediation’s to OWASP Mobile Top 10 Risks&lt;/h3&gt;
+
+&lt;h3 id="insecuredatastoragem1"&gt;Insecure Data Storage (M1)&lt;/h3&gt;
+
+&lt;p&gt;Without a doubt, the biggest risk faced by mobile device consumers comes from a lost or stolen device. The information stored on the device is thus exposed to anyone who finds or steals another person’s device. It is largely up to the apps on the device to provide adequate protection of any data they store. Apple’s iOS provides several mechanisms for protecting data. These built in protections are quite adequate for most consumer-grade information. For more stringent security requirements (e.g., financial data), additional protections beyond those provided by Apple can be built into an application.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general, an app should store locally only the data that is required to perform its functional tasks. This includes side channel data such as system logging (see M8 below). For any form of sensitive data, storing plaintext data storage in an app’s sandbox (e.g., ~/Documents/* ) should always be avoided. Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. &lt;br&gt;
+* Small amounts of consumer grade sensitive data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of consumer-grade data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+* More data that exceeds normal consumer-grade sensitivity, if it absolutely must be stored locally, consider using a third party container encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see &lt;a href="http://sqlcipher.net"&gt;http://sqlcipher.net&lt;/a&gt;). In doing this, proper key management is of utmost importance -- and beyond the scope of this document.
+* For items stored in the keychain leverage the most secure API designation, kSecAttrAccessibleWhenUnlocked (now the default in iOS 5/6)
+* Avoid using NSUserDefaults to store sensitive pieces of information
+* Be aware that all data/entities using NSManagedObects will be stored in an unencrypted database file.&lt;/p&gt;
+
+&lt;h3 id="weakserversidecontrolsm2"&gt;Weak Server Side Controls (M2)&lt;/h3&gt;
+
+&lt;p&gt;Although most server side controls are in fact necessary to handle on the server side — and as such we refer the reader to the [[Web Service Security Cheat Sheet]]—there are several things that can be done on the mobile that aid in the work to be done on the server.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement the mobile client and the server to support a common set of security requirements. For example, information deemed sensitive on the server should be handled with equivalent due caution on the client side. &lt;br&gt;
+Perform positive input validation and canonicalization on all client-side input data. Use regular expressions and other mechanisms to ensure that only allowable data may enter the application at the client end. &lt;br&gt;
+Perform output encoding on untrusted data where feasible.&lt;/p&gt;
+
+&lt;h3 id="insufficienttransportlayerprotectionm3"&gt;Insufficient Transport Layer Protection (M3)&lt;/h3&gt;
+
+&lt;p&gt;Exposing sensitive data to eavesdropping attacks is a common issue with all networked applications, and iOS mobile apps are no exception.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement all apps under the assumption that they will be used on the most wide-open Wi-Fi networks on the planet. &lt;br&gt;
+Make an inventory of all app data that must be protected while in transit. (Protections should include confidentiality as well as integrity.) The inventory should include authentication tokens, session tokens, as well as application data directly. &lt;br&gt;
+Ensure SSL/TLS encryption is used when transmitting or receiving all inventoried data. (See CFNetwork Programming Guide.) &lt;br&gt;
+Ensure your app only accepts properly validated SSL certificates. (CA chain validation is routinely disabled in testing environments; ensure your app has removed any such code prior to public release.) &lt;br&gt;
+Verify through dynamic testing that all inventoried data is adequately protected throughout the operation of the app. &lt;br&gt;
+Verify through dynamic testing that forged, self-signed, etc., certificates cannot be accepted by the app under any circumstances.&lt;/p&gt;
+
+&lt;h3 id="clientsideinjectionm4"&gt;Client Side Injection (M4)&lt;/h3&gt;
+
+&lt;p&gt;Data injection attacks are as real in mobile apps as they are in web apps, although the attack scenarios tend to differ (e.g., exploiting URL schemes to send premium text messages or toll phone calls).  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general, follow the same rules as a web app for input validation and output escaping. &lt;br&gt;
+Canonicalize and positively validate all data input. &lt;br&gt;
+Use parameterized queries, even for local SQLite/SQLcipher calls. &lt;br&gt;
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. &lt;br&gt;
+When building a hybrid web/mobile app, keep the native/local capabilities of the app to a bare minimum required. That is, maintain control of all UIWebView content and pages, and prevent the user from accessing arbitrary, untrusted web content.  &lt;/p&gt;
+
+&lt;h3 id="poorauthorizationandauthenticationm5"&gt;Poor Authorization and Authentication (M5)&lt;/h3&gt;
+
+&lt;p&gt;Although largely a server side control, some mobile features (e.g., unique device identifiers) and common uses can exacerbate the problems surrounding securely authenticating and authorizing users and other entities.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general follow the same rules as a web app for authentication and authorization. &lt;br&gt;
+Never use a device identifier (e.g., UDID , IP number, MAC address, IMEI) to identify a user or session. &lt;br&gt;
+Avoid when possible “out-of-band” authentication tokens sent to the same device as the user is using to log in (e.g., SMS to the same iPhone). &lt;br&gt;
+Implement strong server side authentication, authorization, and session management (control # 4.1-4.6). &lt;br&gt;
+Authenticate all API calls to paid resources (control 8.4).  &lt;/p&gt;
+
+&lt;h3 id="impropersessionhandlingm6"&gt;Improper Session Handling (M6)&lt;/h3&gt;
+
+&lt;p&gt;Similarly, session handling is in general, principally a server task, but mobile devices tend to amplify traditional problems in unforeseen ways. For example, on mobile devices, “sessions” often last far longer than on traditional web applications.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;For the most part, follow sound session management practices as you would for a web application, with a few twists that are specific to mobile devices. &lt;br&gt;
+Never use a device identifier (e.g., UDID, IP number, MAC address, IMEI) to identify a session. (Control 1.13) &lt;br&gt;
+Use only tokens that can be quickly revoked in the event of a lost/stolen device, or compromised session. &lt;br&gt;
+Protect the confidentiality and integrity of session tokens at all times (e.g., always use SSL/TLS when transmitting). &lt;br&gt;
+Use only trustworthy sources for generating sessions.  &lt;/p&gt;
+
+&lt;h3 id="securitydecisionsviauntrustedinputsm7"&gt;Security Decisions via Untrusted Inputs (M7)&lt;/h3&gt;
+
+&lt;p&gt;While iOS does not give apps many channels for communicating among themselves, some exist—and can be abused by an attacker via data injection attacks, malicious apps, etc.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;The combination of input validation, output escaping, and authorization controls can be used against these weaknesses. &lt;br&gt;
+Canonicalize and positively validate all input data, particularly at boundaries between apps. &lt;br&gt;
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. &lt;br&gt;
+Contextually escape all untrusted data output, so that it cannot change the intent of the output itself. &lt;br&gt;
+Verify the caller is permitted to access any requested resources. If appropriate, prompt the user to allow/disallow access to the requested resource.  &lt;/p&gt;
+
+&lt;h3 id="sidechanneldataleakagem8"&gt;Side Channel Data Leakage (M8)&lt;/h3&gt;
+
+&lt;p&gt;Side channels refer here to data I/O generally used for administrative or non-functional (directly) purposes, such as web caches (used to optimize browser speed), keystroke logs (used for spell checking), and similar. Apple’s iOS presents several opportunities for side channel data to inadvertently leak from an app, and that data is often available to anyone who has found or stolen a victim’s device. Most of these can be controlled programmatically in an app.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement all apps under the assumption that the user’s device will be lost or stolen. &lt;br&gt;
+Start by identifying all potential side channel data present on a device. These sources should include, at a bare minimum: web caches, keystroke logs, screen shots, system logs, and cut-and-paste buffers. Be sure to include any third party libraries used. &lt;br&gt;
+Never include sensitive data (e.g., credentials, tokens, PII) in system logs. &lt;br&gt;
+Control iOS’s screenshot behavior to prevent sensitive app data from being captured when an app is minimized. &lt;br&gt;
+Disable keystroke logging for the most sensitive data, to prevent it from being stored in plaintext on the device. &lt;br&gt;
+Disable cut-and-paste buffer for the most sensitive data, to prevent it from being leaked outside of the app. &lt;br&gt;
+Dynamically test the app, including its data stores and communications channels, to verify that no sensitive data is being inappropriately transmitted or stored.  &lt;/p&gt;
+
+&lt;h3 id="brokencryptographym9"&gt;Broken Cryptography (M9)&lt;/h3&gt;
+
+&lt;p&gt;Although the vast majority of cryptographic weaknesses in software result from poor key management, all aspects of a crypto system should be carefully designed and implemented. Mobile apps are no different in that regard.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Never “hard code” or store cryptographic keys where an attacker can trivially recover them. This includes plaintext data files, properties files, and compiled binaries. &lt;br&gt;
+Use secure containers for storing crypto keys; alternately, build a secure key exchange system where the key is controlled by a secure server, and never stored locally on the mobile device. &lt;br&gt;
+Use only strong crypto algorithms and implementations, including key generation tools, hashes, etc. &lt;br&gt;
+Use platform crypto APIs when feasible; use trusted third party code when not. &lt;br&gt;
+Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. &lt;br&gt;
+* Small amounts of data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+To more securely protect static data, consider using a third party encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see &lt;a href="http://sqlcipher.net"&gt;http://sqlcipher.net&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id="sensitiveinformationdisclosurem10"&gt;Sensitive Information Disclosure (M10)&lt;/h3&gt;
+
+&lt;p&gt;All sorts of sensitive data can leak out of iOS apps. Among other things to remember at all times, each app’s compiled binary code is available on the device, and can be reverse engineered by a determined adversary.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Anything that must truly remain private should not reside on the mobile device; keep private information (e.g., algorithms, proprietary information) on the server. &lt;br&gt;
+If private information must be present on a mobile device, ensure it remains in process memory and is never unprotected if it is stored on the device. &lt;br&gt;
+Never hard code or otherwise trivially store passwords, session tokens, etc. &lt;br&gt;
+Strip binaries prior to shipping, and be aware that compiled executable files can still be reverse engineered.&lt;/p&gt;
+
+&lt;h3 id="referencesandfurtherreading"&gt;References and Further Reading&lt;/h3&gt;
+
+&lt;p&gt;OWASP Top 10 Mobile Risks presentation, Appsec USA, Minneapolis, MN, 23 Sept 2011. Jack Mannino, Mike Zusman, and Zach Lanier.&lt;/p&gt;
+
+&lt;p&gt;“iOS Security”, Apple, October 2014 &lt;a href="https://www.apple.com/business/docs/iOS"&gt;https://www.apple.com/business/docs/iOS&lt;/a&gt;&lt;em&gt;Security&lt;/em&gt;Guide&lt;em&gt;Oct&lt;/em&gt;2014.pdf&lt;/p&gt;
+
+&lt;p&gt;“Deploying iPhone and iPad: Apple Configurator”, Apple, March 2012, &lt;a href="http://images.apple.com/iphone/business/docs/iOS"&gt;http://images.apple.com/iphone/business/docs/iOS&lt;/a&gt;&lt;em&gt;Apple&lt;/em&gt;Configurator_Mar12.pdf &lt;/p&gt;
+
+&lt;p&gt;“iPhone OS: Enterprise Deployment Guide”, Apple, 2010, &lt;a href="http://manuals.info.apple.com/en"&gt;http://manuals.info.apple.com/en&lt;/a&gt;&lt;em&gt;US/Enterprise&lt;/em&gt;Deployment_Guide.pdf &lt;/p&gt;
+
+&lt;p&gt;“iPhone in Business”, Apple resources, &lt;a href="http://www.apple.com/iphone/business/resources/"&gt;http://www.apple.com/iphone/business/resources/&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;Apple iOS Developer website.&lt;/p&gt;
+
+&lt;p&gt;"iOS Application (in)Security", MDSec - May 2012, &lt;a href="http://www.mdsec.co.uk/research/iOS"&gt;http://www.mdsec.co.uk/research/iOS&lt;/a&gt;&lt;em&gt;Application&lt;/em&gt;Insecurity&lt;em&gt;wp&lt;/em&gt;v1.0_final.pdf&lt;/p&gt;
+
+&lt;h3 id="sources"&gt;Sources&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/OWASP Wiki Cheat Sheet"&gt;https://www.owasp.org/index.php/IOS&lt;em&gt;Developer&lt;/em&gt;Cheat_Sheet&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Resume</title><description>iOS Developer Resume - Julien Goudet - Lyon France - julien gdt - jlngdt</description><link>http://localhost:2368/resume/</link><guid isPermaLink="false">1b2c499b-682c-474e-a333-9a3d36637017</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 08:45:58 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/DM4C7350.jpg" medium="image"/><content:encoded>&lt;h1 id="juliengoudet"&gt;Julien Goudet&lt;/h1&gt;
 
 &lt;h2 id="2yearsiosdeveloperdigitalbank"&gt;2 years iOS Developer - Digital Bank&lt;/h2&gt;
 

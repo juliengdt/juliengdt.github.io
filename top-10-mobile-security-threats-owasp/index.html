@@ -1,0 +1,282 @@
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>TOP 10 Mobile Security Threats - OWASP</title>
+	<meta name="description" content="">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<link rel="shortcut icon" href="../favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="../assets/styles/build/style.css?v=f5a0f1f97b">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen:400,700">
+	
+	
+	
+
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Julien Gdt">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="TOP 10 Mobile Security Threats - OWASP">
+    <meta property="og:description" content="This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the https://www.owasp.org/index.php/...">
+    <meta property="og:url" content="http://localhost:2368/top-10-mobile-security-threats-owasp/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29.png">
+    <meta property="article:published_time" content="2015-06-05T06:47:46.780Z">
+    <meta property="article:modified_time" content="2015-06-05T06:47:46.769Z">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="TOP 10 Mobile Security Threats - OWASP">
+    <meta name="twitter:description" content="This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the https://www.owasp.org/index.php/...">
+    <meta name="twitter:url" content="http://localhost:2368/top-10-mobile-security-threats-owasp/">
+    <meta name="twitter:image:src" content="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29.png">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Julien Gdt",
+    "author": {
+        "@type": "Person",
+        "name": "Julien Gdt",
+        "image": "http://localhost:2368/content/images/2015/05/jlngdt_rounded.png",
+        "url": "http://localhost:2368/author/julien",
+        "sameAs": "http://juliengdt.github.io/github-resume/",
+        "description": null
+    },
+    "headline": "TOP 10 Mobile Security Threats - OWASP",
+    "url": "http://localhost:2368/top-10-mobile-security-threats-owasp/",
+    "datePublished": "2015-06-05T06:47:46.780Z",
+    "dateModified": "2015-06-05T06:47:46.769Z",
+    "image": "http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29.png",
+    "description": "This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the https://www.owasp.org/index.php/..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.6">
+    <link rel="alternate" type="application/rss+xml" title="Julien Gdt" href="../rss/index.html">
+</head>
+<body class="post-template
+	&gt;
+	
+	&lt;div class=" site-main>
+
+<header class="site-header">
+	<a href="../"><img class="blog-logo" src="../content/images/2015/05/Decode-for-Ghost-1-1.svg" alt="Blog Logo"></a>
+	<h1 class="blog-title"><a href="../">Julien Gdt</a></h1>
+	<h2 class="blog-description">Yo. I'm coding on iOS, and you ?</h2>
+	
+	<ul class="nav">
+    <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+</ul>
+</header>
+
+<main class="site-content" role="main">
+
+	<article class="post">
+			
+
+
+			<header class="post-header">
+				<a href="index.html"><img class="post-image" src="../content/images/2015/06/800px-2014-01-26_20-23-29.png"></a>
+				<h1 class="post-title">TOP 10 Mobile Security Threats - OWASP</h1>
+				<span class="post-meta">Posted on <time datetime="2015-06-05">05 June 2015</time></span>
+			</header>
+
+			<section class="post-content">
+				<p>This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the <a href="index.html">https://www.owasp.org/index.php/OWASP<em>Mobile</em>Security_Project OWASP Mobile Top 10 Risks</a> list.</p>
+
+<h3 id="basics">Basics</h3>
+
+<p>From a user perspective, two of the best things one can do to protect her iOS device are: enable strong passwords, and [https://www.owasp.org/index.php/Mobile<em>Jailbreaking</em>Cheat_Sheet refrain from jailbreaking the device]. For developers, both of these issues are problematic, as they are not verifiable within an app’s sandbox environment. (Apple previously had an API for testing devices to see if they are jailbroken, but that API was deprecated in 2010.) For enterprises, strong passwords, along with dozens of other security configuration attributes can be managed and enforced via a Mobile Device Management (MDM) product. Small businesses and individuals with multiple devices can use Apple’s iPhone Configuration Utility (<a href="http://www.apple.com/support/iphone/enterprise/">http://www.apple.com/support/iphone/enterprise/</a>) and Apple Configurator (available in the Mac App Store) to build secure configuration profiles and deploy them on multiple devices.</p>
+
+<h3 id="remediationstoowaspmobiletop10risks">Remediation’s to OWASP Mobile Top 10 Risks</h3>
+
+<h3 id="insecuredatastoragem1">Insecure Data Storage (M1)</h3>
+
+<p>Without a doubt, the biggest risk faced by mobile device consumers comes from a lost or stolen device. The information stored on the device is thus exposed to anyone who finds or steals another person’s device. It is largely up to the apps on the device to provide adequate protection of any data they store. Apple’s iOS provides several mechanisms for protecting data. These built in protections are quite adequate for most consumer-grade information. For more stringent security requirements (e.g., financial data), additional protections beyond those provided by Apple can be built into an application.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>In general, an app should store locally only the data that is required to perform its functional tasks. This includes side channel data such as system logging (see M8 below). For any form of sensitive data, storing plaintext data storage in an app’s sandbox (e.g., ~/Documents/* ) should always be avoided. Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. <br>
+* Small amounts of consumer grade sensitive data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of consumer-grade data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+* More data that exceeds normal consumer-grade sensitivity, if it absolutely must be stored locally, consider using a third party container encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see <a href="http://sqlcipher.net">http://sqlcipher.net</a>). In doing this, proper key management is of utmost importance -- and beyond the scope of this document.
+* For items stored in the keychain leverage the most secure API designation, kSecAttrAccessibleWhenUnlocked (now the default in iOS 5/6)
+* Avoid using NSUserDefaults to store sensitive pieces of information
+* Be aware that all data/entities using NSManagedObects will be stored in an unencrypted database file.</p>
+
+<h3 id="weakserversidecontrolsm2">Weak Server Side Controls (M2)</h3>
+
+<p>Although most server side controls are in fact necessary to handle on the server side — and as such we refer the reader to the [[Web Service Security Cheat Sheet]]—there are several things that can be done on the mobile that aid in the work to be done on the server.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>Design and implement the mobile client and the server to support a common set of security requirements. For example, information deemed sensitive on the server should be handled with equivalent due caution on the client side. <br>
+Perform positive input validation and canonicalization on all client-side input data. Use regular expressions and other mechanisms to ensure that only allowable data may enter the application at the client end. <br>
+Perform output encoding on untrusted data where feasible.</p>
+
+<h3 id="insufficienttransportlayerprotectionm3">Insufficient Transport Layer Protection (M3)</h3>
+
+<p>Exposing sensitive data to eavesdropping attacks is a common issue with all networked applications, and iOS mobile apps are no exception.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>Design and implement all apps under the assumption that they will be used on the most wide-open Wi-Fi networks on the planet. <br>
+Make an inventory of all app data that must be protected while in transit. (Protections should include confidentiality as well as integrity.) The inventory should include authentication tokens, session tokens, as well as application data directly. <br>
+Ensure SSL/TLS encryption is used when transmitting or receiving all inventoried data. (See CFNetwork Programming Guide.) <br>
+Ensure your app only accepts properly validated SSL certificates. (CA chain validation is routinely disabled in testing environments; ensure your app has removed any such code prior to public release.) <br>
+Verify through dynamic testing that all inventoried data is adequately protected throughout the operation of the app. <br>
+Verify through dynamic testing that forged, self-signed, etc., certificates cannot be accepted by the app under any circumstances.</p>
+
+<h3 id="clientsideinjectionm4">Client Side Injection (M4)</h3>
+
+<p>Data injection attacks are as real in mobile apps as they are in web apps, although the attack scenarios tend to differ (e.g., exploiting URL schemes to send premium text messages or toll phone calls).  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>In general, follow the same rules as a web app for input validation and output escaping. <br>
+Canonicalize and positively validate all data input. <br>
+Use parameterized queries, even for local SQLite/SQLcipher calls. <br>
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. <br>
+When building a hybrid web/mobile app, keep the native/local capabilities of the app to a bare minimum required. That is, maintain control of all UIWebView content and pages, and prevent the user from accessing arbitrary, untrusted web content.  </p>
+
+<h3 id="poorauthorizationandauthenticationm5">Poor Authorization and Authentication (M5)</h3>
+
+<p>Although largely a server side control, some mobile features (e.g., unique device identifiers) and common uses can exacerbate the problems surrounding securely authenticating and authorizing users and other entities.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>In general follow the same rules as a web app for authentication and authorization. <br>
+Never use a device identifier (e.g., UDID , IP number, MAC address, IMEI) to identify a user or session. <br>
+Avoid when possible “out-of-band” authentication tokens sent to the same device as the user is using to log in (e.g., SMS to the same iPhone). <br>
+Implement strong server side authentication, authorization, and session management (control # 4.1-4.6). <br>
+Authenticate all API calls to paid resources (control 8.4).  </p>
+
+<h3 id="impropersessionhandlingm6">Improper Session Handling (M6)</h3>
+
+<p>Similarly, session handling is in general, principally a server task, but mobile devices tend to amplify traditional problems in unforeseen ways. For example, on mobile devices, “sessions” often last far longer than on traditional web applications.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>For the most part, follow sound session management practices as you would for a web application, with a few twists that are specific to mobile devices. <br>
+Never use a device identifier (e.g., UDID, IP number, MAC address, IMEI) to identify a session. (Control 1.13) <br>
+Use only tokens that can be quickly revoked in the event of a lost/stolen device, or compromised session. <br>
+Protect the confidentiality and integrity of session tokens at all times (e.g., always use SSL/TLS when transmitting). <br>
+Use only trustworthy sources for generating sessions.  </p>
+
+<h3 id="securitydecisionsviauntrustedinputsm7">Security Decisions via Untrusted Inputs (M7)</h3>
+
+<p>While iOS does not give apps many channels for communicating among themselves, some exist—and can be abused by an attacker via data injection attacks, malicious apps, etc.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>The combination of input validation, output escaping, and authorization controls can be used against these weaknesses. <br>
+Canonicalize and positively validate all input data, particularly at boundaries between apps. <br>
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. <br>
+Contextually escape all untrusted data output, so that it cannot change the intent of the output itself. <br>
+Verify the caller is permitted to access any requested resources. If appropriate, prompt the user to allow/disallow access to the requested resource.  </p>
+
+<h3 id="sidechanneldataleakagem8">Side Channel Data Leakage (M8)</h3>
+
+<p>Side channels refer here to data I/O generally used for administrative or non-functional (directly) purposes, such as web caches (used to optimize browser speed), keystroke logs (used for spell checking), and similar. Apple’s iOS presents several opportunities for side channel data to inadvertently leak from an app, and that data is often available to anyone who has found or stolen a victim’s device. Most of these can be controlled programmatically in an app.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>Design and implement all apps under the assumption that the user’s device will be lost or stolen. <br>
+Start by identifying all potential side channel data present on a device. These sources should include, at a bare minimum: web caches, keystroke logs, screen shots, system logs, and cut-and-paste buffers. Be sure to include any third party libraries used. <br>
+Never include sensitive data (e.g., credentials, tokens, PII) in system logs. <br>
+Control iOS’s screenshot behavior to prevent sensitive app data from being captured when an app is minimized. <br>
+Disable keystroke logging for the most sensitive data, to prevent it from being stored in plaintext on the device. <br>
+Disable cut-and-paste buffer for the most sensitive data, to prevent it from being leaked outside of the app. <br>
+Dynamically test the app, including its data stores and communications channels, to verify that no sensitive data is being inappropriately transmitted or stored.  </p>
+
+<h3 id="brokencryptographym9">Broken Cryptography (M9)</h3>
+
+<p>Although the vast majority of cryptographic weaknesses in software result from poor key management, all aspects of a crypto system should be carefully designed and implemented. Mobile apps are no different in that regard.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>Never “hard code” or store cryptographic keys where an attacker can trivially recover them. This includes plaintext data files, properties files, and compiled binaries. <br>
+Use secure containers for storing crypto keys; alternately, build a secure key exchange system where the key is controlled by a secure server, and never stored locally on the mobile device. <br>
+Use only strong crypto algorithms and implementations, including key generation tools, hashes, etc. <br>
+Use platform crypto APIs when feasible; use trusted third party code when not. <br>
+Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. <br>
+* Small amounts of data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+To more securely protect static data, consider using a third party encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see <a href="http://sqlcipher.net">http://sqlcipher.net</a>).</p>
+
+<h3 id="sensitiveinformationdisclosurem10">Sensitive Information Disclosure (M10)</h3>
+
+<p>All sorts of sensitive data can leak out of iOS apps. Among other things to remember at all times, each app’s compiled binary code is available on the device, and can be reverse engineered by a determined adversary.  </p>
+
+<h6 id="remediations">Remediations</h6>
+
+<p>Anything that must truly remain private should not reside on the mobile device; keep private information (e.g., algorithms, proprietary information) on the server. <br>
+If private information must be present on a mobile device, ensure it remains in process memory and is never unprotected if it is stored on the device. <br>
+Never hard code or otherwise trivially store passwords, session tokens, etc. <br>
+Strip binaries prior to shipping, and be aware that compiled executable files can still be reverse engineered.</p>
+
+<h3 id="referencesandfurtherreading">References and Further Reading</h3>
+
+<p>OWASP Top 10 Mobile Risks presentation, Appsec USA, Minneapolis, MN, 23 Sept 2011. Jack Mannino, Mike Zusman, and Zach Lanier.</p>
+
+<p>“iOS Security”, Apple, October 2014 <a href="https://www.apple.com/business/docs/iOS">https://www.apple.com/business/docs/iOS</a><em>Security</em>Guide<em>Oct</em>2014.pdf</p>
+
+<p>“Deploying iPhone and iPad: Apple Configurator”, Apple, March 2012, <a href="http://images.apple.com/iphone/business/docs/iOS">http://images.apple.com/iphone/business/docs/iOS</a><em>Apple</em>Configurator_Mar12.pdf </p>
+
+<p>“iPhone OS: Enterprise Deployment Guide”, Apple, 2010, <a href="http://manuals.info.apple.com/en">http://manuals.info.apple.com/en</a><em>US/Enterprise</em>Deployment_Guide.pdf </p>
+
+<p>“iPhone in Business”, Apple resources, <a href="http://www.apple.com/iphone/business/resources/">http://www.apple.com/iphone/business/resources/</a> </p>
+
+<p>Apple iOS Developer website.</p>
+
+<p>"iOS Application (in)Security", MDSec - May 2012, <a href="http://www.mdsec.co.uk/research/iOS">http://www.mdsec.co.uk/research/iOS</a><em>Application</em>Insecurity<em>wp</em>v1.0_final.pdf</p>
+
+<h3 id="sources">Sources</h3>
+
+<p><a href="http://localhost:2368/top-10-mobile-security-threats-owasp/OWASP%20Wiki%20Cheat%20Sheet">https://www.owasp.org/index.php/IOS<em>Developer</em>Cheat_Sheet</a></p>
+			</section>
+
+			<footer class="post-footer">
+					<section class="author-card cf">
+							<figure class="author-image">					
+								<a href="../author/julien/"><img src="../content/images/2015/05/jlngdt_rounded.png" alt="Julien Gdt's Image"></a>
+							</figure>
+						<div class="author-meta">
+							 <a class="author-name" href="../author/julien/">Julien Gdt
+							 </a><a href="http://juliengdt.github.io/github-resume/" class="author-website" rel="author">Website</a>
+							 <div class="author-location">Lyon - FR</div>
+							 
+						</div>
+					</section>
+
+			</footer>
+	</article>
+	
+	<aside class="post-navigation cf">
+			<div class="nav-previous">
+				<a href="../resume/">Resume</a>
+			</div>
+	</aside>
+
+</main>
+
+
+	<footer class="site-footer">
+		<a class="subscribe icon-feed" href="../rss/index.rss"><span class="tooltip">RSS</span></a>
+		<div class="inner">
+			 <section class="copyright">All content copyright <a href="../">Julien Gdt</a> © 2015 • All rights reserved.</section>
+			 <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+			 <section class="themeinfo"><a href="http://scotthsmith.com/projects/decode/">Decode</a> by <a href="http://scotthsmith.com">Scott Smith</a></section>
+		</div>
+	</footer>
+
+ 
+  
+
+	<script src="../public/jquery.js?v=f5a0f1f97b"></script>
+	<script src="../assets/scripts/build/main.js?v=f5a0f1f97b"></script>
+</body>
