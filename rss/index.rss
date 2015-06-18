@@ -1,4 +1,165 @@
-<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Fri, 05 Jun 2015 06:52:46 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>TOP 10 Mobile Security Threats - OWASP</title><description>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29-2.png" alt="TOP 10 OWASP iOS"&gt;&lt;/p&gt;
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Thu, 18 Jun 2015 22:11:34 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>iOS Code Quality 1/2</title><description>&lt;p&gt;When I tell my friend i'm a developer and i'm writing some bunch of code, they don't say it but, I know they see me like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://cdn.cultofmac.com/wp-content/uploads/2013/09/CoM-Coding.jpg" alt="Crazy Coding" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;And when I feel this, I know they see me like someone who write tons and tons of line of codes, unreadable things&lt;/p&gt;</description><link>http://localhost:2368/ios-code-quality-12/</link><guid isPermaLink="false">bd0a545d-bb4b-4da5-9032-59907d7bc4a3</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Thu, 18 Jun 2015 22:11:24 GMT</pubDate><content:encoded>&lt;p&gt;When I tell my friend i'm a developer and i'm writing some bunch of code, they don't say it but, I know they see me like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://cdn.cultofmac.com/wp-content/uploads/2013/09/CoM-Coding.jpg" alt="Crazy Coding" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;And when I feel this, I know they see me like someone who write tons and tons of line of codes, unreadable things like, you know, the Matrix. But it's false, because good dev use good code quality tools and rules. And if you follow some good guidelines and have a bit of organization/team-spirit, you can do a xcodeproj as sexy as the final app! Here are some of the major things I personaly use when I develop an iOS app.&lt;/p&gt;
+
+&lt;h2 id="teamworking"&gt;Team Working&lt;/h2&gt;
+
+&lt;p&gt;Excepting some folks, many of iOS devs work in a team and THAT is a big good point !&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    Two pairs of eyes for one line of code
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This sentence must in your TOP-10 geeky sentence when you are coding. It can be seen unproductive to be reviewed by another co-worker, but in fact, it's very effective, more productive and very formative. This can be done with some rules:&lt;/p&gt;
+
+&lt;h3 id="extremeprogramming"&gt;Extreme programming&lt;/h3&gt;
+
+&lt;p&gt;This can be viewed like a good expression to explain when 2 folks are in front of a screen but ... no programming (9GAG is your best friend for this period) BUT in reality it's a very effective way to produce lighter code, more thoughtful bunch of lines or algorithm. Coding in binom can show you another point of view or another way to do your stuff.&lt;/p&gt;
+
+&lt;p&gt;It's an efficient solution but it have to be done sporadically and periodically. Too many extreme programming kill the process: this have to be done only when you stuck on a part of your work or when you have to choose between solutions, when you have to make a big choices. 2 brains for big things, not to choose a color for example (and after go to see some poney on 9gag...).&lt;/p&gt;
+
+&lt;h3 id="communityprogramming"&gt;Community programming&lt;/h3&gt;
+
+&lt;p&gt;Softer than E.P., community programming is a good (and personnaly adopted) way to review your code. The best example of community programming is GitHub.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://www.simonblum.me/wp-content/uploads/2014/10/GitHub.jpg" alt="GitHub Logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;With 9 millions of users, GitHub is the best example of community programming. And it's done using some programming tools, seen below ;) ! &lt;br&gt;
+The main objective of this method is to review your code by your co-worker but on your commit (which push you into doing short commit ! another little tips), which are accepted during pull/merge request of your laste change on the main repo (@see below)&lt;/p&gt;
+
+&lt;h2 id="teamworkinggittools"&gt;Team working - Git tools&lt;/h2&gt;
+
+&lt;p&gt;When you build an app in a community/team programming spirit, you can use two veru good assets in the git package. Git-Flow and pull/merge request.&lt;/p&gt;
+
+&lt;h3 id="gitflow"&gt;Git-Flow&lt;/h3&gt;
+
+&lt;p&gt;Git-Flow is not a direct way to enhance your code quality, but enhance your code organization, and so the quality of your build. It can be summarized by a famous sentence:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Divide to rule
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and in french &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Diviser pour mieux régner   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Git-Flow allow you to divide your action and force you to commit your code for each hotfix/feature/release/build/add/improvment/whateveryouwant in a different branch. Let's see this very good graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="https://fr.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg" alt="GitFlow graph" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, when you, you code on two branches (develop and master), Git Flow allow/force you to much more:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Historical branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;These are your master and develop. Every commit on the master is a production release. Every commit on the develop branch is a beta-test release for you and not the client (like for your internal receip. Not more, not less. That's all. To give you a scope, develop is the branch where you will do your main continuous integration.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Feature branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;They allow you to add... well ... features ! For ex, in your app you want to accept URL Schemes, you will branch from the last develop, named it like "URLScheme" and do all its job on it, and ONLY its job. You wanna fix at the middle of the feature a bug ? let's commit your work on the "URLScheme" and use the Git-Flow "Hotfix"&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Release branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;develop is your main branch, master is the AppStore branch, and release is the client branch. Every commit on it is an AdHoc deployment. Easy, no ? There are some conventions about this branch:
+&lt;ul&gt;&lt;li&gt;branch off: develop&lt;/li&gt;
+&lt;li&gt;merge into: master&lt;/li&gt;
+&lt;li&gt;naming convention: release-* or release/*&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hotfix branches, or "Maintenance branches"&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;In web jobs in general, hotfix is seen like a hotfix directly on the master branch, and deploy at the same time on the develop one. For iOS, you can use hotfixes on master directly (for critical issues like security threat) or in the develop branch to fix an issue seen by a client on its last Release commit (but keep an eye on wich develop commit you have to hotfix !)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want more informations about Git-Flow workflow, I redirect you on the very good article made by Atlassian: &lt;a href="https://fr.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow"&gt;Gitflow Workflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id="forksmergepullrequests"&gt;Forks &amp;amp; Merge/Pull requests&lt;/h3&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="https://fr.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/forking-workflow/01.svg" alt="Merge Requests" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Forking workflow has a major difference compared to the main workflow. There is not one repos for X devs, there are as many repos as folks. One of this devs is the "dictator" one, the expert (blue guy above) who reviewed all developers' code. This is the strict way to use Forking Workflow. I prefere when there is not dictator, and all others developers reviewed the code: It's cost-efficient and not all mobile team have an expert, it's a fact. So you can be the dictator... yes ...&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/495/314/e2b.png" alt="Diabolic baby meme" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is how it work:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instead of working on the main repos, every devs &lt;a href="https://help.github.com/articles/fork-a-repo/"&gt;fork&lt;/a&gt; it on his own GitHub/GitLab profil (his own remote).&lt;/li&gt;
+&lt;li&gt;Every devs clone their own new-borned remote locally.&lt;/li&gt;
+&lt;li&gt;They do stuffs...&lt;/li&gt;
+&lt;li&gt;...and commit/push (so always on their remote repo)&lt;/li&gt;
+&lt;li&gt;After that, and when a developer feels the need to be reviewed and apply their changes for all other devs AND the big main repo (the upstream), he ask a pull/merge request
+&lt;ul&gt;&lt;li&gt;On GitHub it's named a Pull Request...&lt;/li&gt;
+&lt;li&gt;and on Gitlab a Merge Request. But it's the same workflow/meaning.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The dictator (or in a best cases the others devs) review the code and comment it. Note: a Pull/Merge request has to be seen like a post or a thread: you can discuss on it, ask why he did like that, explain why your solution is better etc etc ...&lt;/li&gt;
+&lt;li&gt;The dev who ask the request saw some "To-Do" changes written during the review, change his code, push again (the PR/MR is automatically refreshed, no need to recreate one)&lt;/li&gt;
+&lt;li&gt;Another review by the dictator etc etc etc ...&lt;/li&gt;
+&lt;li&gt;... the Dictator accept the MR/PR&lt;/li&gt;
+&lt;li&gt;The changes are automatically merged (80% of the times, maybe some part have to be done manually, thank you .pbxproj) and deploy on the main repo, the upstream one !&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;all other devs just have to pull on their own forked to get the changes !&lt;/p&gt;
+
+&lt;p&gt;Again, if you want better or deeper explanations, Atlassian is your friend: &lt;a href="https://fr.atlassian.com/git/tutorials/comparing-workflows/forking-workflow"&gt;Forking Workflow&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id="dependencymanagers"&gt;Dependency managers&lt;/h2&gt;
+
+&lt;p&gt;Every good iOS developer is a lazy developer, that's a fact: you don't want to re-re-re-re-re-re-rewrite the same model, the same HTTP Client or the same Custom 3D popup View Of The Death. And you don't even think to pull an update of these really cool stuffs, afraid to put a time bomb on your project. For this, you can use dependency managers.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://www.appletouch.fr/wp-content/uploads/2010/12/logo-package-cydia.png" alt="Package Logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Dependency managers allow you to use the KISS spirit: Keep It Simple Stuff. &lt;br&gt;
+No need to re-invent known and very well done stuff (who said AFNetwork ?), get errors when you want to add this beautiful CryptographicOfTheDeath.bundle or when you have the best red lines in xCode: "Duplicate Symbols for ARM64" ... yay ! &lt;/p&gt;
+
+&lt;h3 id="cocoapods"&gt;Cocoapods&lt;/h3&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://blog.newrelic.com/wp-content/uploads/cocoapods-2.jpg" alt="Cocoapods logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;The TOP 1 tool for all iOS developers is Cocoapods: it allows you to add any correct repo on your xcode project and use it just by adding one line of script. It depends of a file, named Podfile, and created by yourself at the root of your project and is presented like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;platform :ios, '8.0'
+use_frameworks!
+
+target 'MyApp' do
+  pod 'AFNetworking', '~&amp;gt; 2.5'
+  pod 'ORStackView', '~&amp;gt; 2.0'
+  pod 'SwiftyJSON', '~&amp;gt; 2.1'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just with this, you are able to create a .xcworkspace containing your project and all of these awesome frameworks, just by tapping on your Terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pod install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And magic happen. No injection error, no duplicate symbols, everything rocks. You now want to use AFNetworking ? just put it on your file like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;lt;AFNetworking/AFnetworking.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;the main drawbacks of Cocoapods is its solution: it's intrusive in your code (you have to open a xcworkspace) and not all libraries can be pulled by Cocoapods, they need to be known in the Cocoapods database. Not like Carthage.&lt;/p&gt;
+
+&lt;p&gt;If you want more informations about Cocoapods --&gt; &lt;a href="https://cocoapods.org"&gt;here&lt;/a&gt; &lt;/p&gt;
+
+&lt;h3 id="carthage"&gt;Carthage&lt;/h3&gt;
+
+&lt;p&gt;Instead of Cocoapods, Carthage allow you to inject all (well done) repositories you want, package it into static or dynamic libs and give you beautifuls .framework. &lt;br&gt;
+When Cocoapods is easier to use, Carthage need to create some manual stuff, like importation and XocdeProject modifications, but can be done easily, and maybe automatically done in a beautilful high end Carthage script.&lt;/p&gt;
+
+&lt;p&gt;The solution is based on a Cartfile, which list all of the framework you want with their repos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;github "Carthage/ReactiveTask" "0.7-beta.2"
+github "thoughtbot/Argo" ~&amp;gt; 1.0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not a pod install to do, but a &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;carthage update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And your framework are done ! You 'just' have to integrate it (but again, I pretty sure this part can be automatically done)&lt;/p&gt;
+
+&lt;p&gt;If you want more informations about Carthage --&gt; &lt;a href="https://github.com/Carthage/Carthage"&gt;here&lt;/a&gt; &lt;/p&gt;</content:encoded></item><item><title>TOP 10 Mobile Security Threats - OWASP</title><description>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29-2.png" alt="TOP 10 OWASP iOS"&gt;&lt;/p&gt;
 
 &lt;p&gt;This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the &lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/"&gt;https://www.owasp.org/index.php/OWASP&lt;em&gt;Mobile&lt;/em&gt;Security_Project OWASP Mobile Top 10 Risks&lt;/a&gt; list.&lt;/p&gt;</description><link>http://localhost:2368/top-10-mobile-security-threats-owasp/</link><guid isPermaLink="false">2e22097f-f555-4d76-b9ac-8a8ab8d67a7d</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Fri, 05 Jun 2015 06:47:46 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29-2.png" alt="TOP 10 OWASP iOS"&gt;&lt;/p&gt;
 
