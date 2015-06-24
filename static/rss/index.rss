@@ -1,0 +1,1109 @@
+<rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" version="2.0"><channel><title>Julien Gdt</title><description>Yo. I'm coding on iOS, and you ?</description><link>http://localhost:2368/</link><generator>Ghost 0.6</generator><lastBuildDate>Wed, 24 Jun 2015 21:32:16 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title>NHL, or how to be lazzier than AFNetworking</title><description>&lt;p&gt;Today i'm gonna to release first stone of NHL, for Network High Level. This gonna be for me my main bundle when I have to call REST services on iOS/OSX.&lt;/p&gt;
+
+&lt;p&gt;It's live on Github, even with a beautiful auto-generated pages : &lt;a href="https://juliengdt.github.io/NHL"&gt;NHL on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just for fun, the "mustached" logo:&lt;/p&gt;</description><link>http://localhost:2368/nhl-or-how-to-be-lazzier-than-afnetworking/</link><guid isPermaLink="false">f71354a8-c714-4b94-a200-37539f103c47</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 24 Jun 2015 21:31:57 GMT</pubDate><content:encoded>&lt;p&gt;Today i'm gonna to release first stone of NHL, for Network High Level. This gonna be for me my main bundle when I have to call REST services on iOS/OSX.&lt;/p&gt;
+
+&lt;p&gt;It's live on Github, even with a beautiful auto-generated pages : &lt;a href="https://juliengdt.github.io/NHL"&gt;NHL on Github&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Just for fun, the "mustached" logo:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="https://github.com/juliengdt/NHL/raw/master/NHL.png" alt="https://github.com/juliengdt/NHL/raw/master/NHL.png" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Cheers !&lt;/p&gt;</content:encoded></item><item><title>iOS Code Quality 1/2</title><description>&lt;p&gt;When I tell my friend i'm a developer and i'm writing some bunch of code, they don't say it but, I know they see me like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://cdn.cultofmac.com/wp-content/uploads/2013/09/CoM-Coding.jpg" alt="Crazy Coding" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;And when I feel this, I know they see me like someone who write tons and tons of line of codes, unreadable things&lt;/p&gt;</description><link>http://localhost:2368/ios-code-quality-12/</link><guid isPermaLink="false">bd0a545d-bb4b-4da5-9032-59907d7bc4a3</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Thu, 18 Jun 2015 22:11:24 GMT</pubDate><content:encoded>&lt;p&gt;When I tell my friend i'm a developer and i'm writing some bunch of code, they don't say it but, I know they see me like this:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://cdn.cultofmac.com/wp-content/uploads/2013/09/CoM-Coding.jpg" alt="Crazy Coding" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;And when I feel this, I know they see me like someone who write tons and tons of line of codes, unreadable things like, you know, the Matrix. But it's false, because good dev use good code quality tools and rules. And if you follow some good guidelines and have a bit of organization/team-spirit, you can do a xcodeproj as sexy as the final app! Here are some of the major things I personaly use when I develop an iOS app.&lt;/p&gt;
+
+&lt;h2 id="teamworking"&gt;Team Working&lt;/h2&gt;
+
+&lt;p&gt;Excepting some folks, many of iOS devs work in a team and THAT is a big good point !&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    Two pairs of eyes for one line of code
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This sentence must in your TOP-10 geeky sentence when you are coding. It can be seen unproductive to be reviewed by another co-worker, but in fact, it's very effective, more productive and very formative. This can be done with some rules:&lt;/p&gt;
+
+&lt;h3 id="extremeprogramming"&gt;Extreme programming&lt;/h3&gt;
+
+&lt;p&gt;This can be viewed like a good expression to explain when 2 folks are in front of a screen but ... no programming (9GAG is your best friend for this period) BUT in reality it's a very effective way to produce lighter code, more thoughtful bunch of lines or algorithm. Coding in binom can show you another point of view or another way to do your stuff.&lt;/p&gt;
+
+&lt;p&gt;It's an efficient solution but it have to be done sporadically and periodically. Too many extreme programming kill the process: this have to be done only when you stuck on a part of your work or when you have to choose between solutions, when you have to make a big choices. 2 brains for big things, not to choose a color for example (and after go to see some poney on 9gag...).&lt;/p&gt;
+
+&lt;h3 id="communityprogramming"&gt;Community programming&lt;/h3&gt;
+
+&lt;p&gt;Softer than E.P., community programming is a good (and personnaly adopted) way to review your code. The best example of community programming is GitHub.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://www.simonblum.me/wp-content/uploads/2014/10/GitHub.jpg" alt="GitHub Logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;With 9 millions of users, GitHub is the best example of community programming. And it's done using some programming tools, seen below ;) ! &lt;br&gt;
+The main objective of this method is to review your code by your co-worker but on your commit (which push you into doing short commit ! another little tips), which are accepted during pull/merge request of your laste change on the main repo (@see below)&lt;/p&gt;
+
+&lt;h2 id="teamworkinggittools"&gt;Team working - Git tools&lt;/h2&gt;
+
+&lt;p&gt;When you build an app in a community/team programming spirit, you can use two veru good assets in the git package. Git-Flow and pull/merge request.&lt;/p&gt;
+
+&lt;h3 id="gitflow"&gt;Git-Flow&lt;/h3&gt;
+
+&lt;p&gt;Git-Flow is not a direct way to enhance your code quality, but enhance your code organization, and so the quality of your build. It can be summarized by a famous sentence:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Divide to rule
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and in french &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Diviser pour mieux régner   
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Git-Flow allow you to divide your action and force you to commit your code for each hotfix/feature/release/build/add/improvment/whateveryouwant in a different branch. Let's see this very good graph:&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="https://fr.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/gitflow-workflow/05.svg" alt="GitFlow graph" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see, when you, you code on two branches (develop and master), Git Flow allow/force you to much more:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Historical branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;These are your master and develop. Every commit on the master is a production release. Every commit on the develop branch is a beta-test release for you and not the client (like for your internal receip. Not more, not less. That's all. To give you a scope, develop is the branch where you will do your main continuous integration.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Feature branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;They allow you to add... well ... features ! For ex, in your app you want to accept URL Schemes, you will branch from the last develop, named it like "URLScheme" and do all its job on it, and ONLY its job. You wanna fix at the middle of the feature a bug ? let's commit your work on the "URLScheme" and use the Git-Flow "Hotfix"&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Release branches&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;develop is your main branch, master is the AppStore branch, and release is the client branch. Every commit on it is an AdHoc deployment. Easy, no ? There are some conventions about this branch:
+&lt;ul&gt;&lt;li&gt;branch off: develop&lt;/li&gt;
+&lt;li&gt;merge into: master&lt;/li&gt;
+&lt;li&gt;naming convention: release-* or release/*&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Hotfix branches, or "Maintenance branches"&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;In web jobs in general, hotfix is seen like a hotfix directly on the master branch, and deploy at the same time on the develop one. For iOS, you can use hotfixes on master directly (for critical issues like security threat) or in the develop branch to fix an issue seen by a client on its last Release commit (but keep an eye on wich develop commit you have to hotfix !)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;If you want more informations about Git-Flow workflow, I redirect you on the very good article made by Atlassian: &lt;a href="https://fr.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow"&gt;Gitflow Workflow&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id="forksmergepullrequests"&gt;Forks &amp;amp; Merge/Pull requests&lt;/h3&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="https://fr.atlassian.com/git/images/tutorials/collaborating/comparing-workflows/forking-workflow/01.svg" alt="Merge Requests" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Forking workflow has a major difference compared to the main workflow. There is not one repos for X devs, there are as many repos as folks. One of this devs is the "dictator" one, the expert (blue guy above) who reviewed all developers' code. This is the strict way to use Forking Workflow. I prefere when there is not dictator, and all others developers reviewed the code: It's cost-efficient and not all mobile team have an expert, it's a fact. So you can be the dictator... yes ...&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://i0.kym-cdn.com/photos/images/newsfeed/000/495/314/e2b.png" alt="Diabolic baby meme" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Here is how it work:&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Instead of working on the main repos, every devs &lt;a href="https://help.github.com/articles/fork-a-repo/"&gt;fork&lt;/a&gt; it on his own GitHub/GitLab profil (his own remote).&lt;/li&gt;
+&lt;li&gt;Every devs clone their own new-borned remote locally.&lt;/li&gt;
+&lt;li&gt;They do stuffs...&lt;/li&gt;
+&lt;li&gt;...and commit/push (so always on their remote repo)&lt;/li&gt;
+&lt;li&gt;After that, and when a developer feels the need to be reviewed and apply their changes for all other devs AND the big main repo (the upstream), he ask a pull/merge request
+&lt;ul&gt;&lt;li&gt;On GitHub it's named a Pull Request...&lt;/li&gt;
+&lt;li&gt;and on Gitlab a Merge Request. But it's the same workflow/meaning.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;The dictator (or in a best cases the others devs) review the code and comment it. Note: a Pull/Merge request has to be seen like a post or a thread: you can discuss on it, ask why he did like that, explain why your solution is better etc etc ...&lt;/li&gt;
+&lt;li&gt;The dev who ask the request saw some "To-Do" changes written during the review, change his code, push again (the PR/MR is automatically refreshed, no need to recreate one)&lt;/li&gt;
+&lt;li&gt;Another review by the dictator etc etc etc ...&lt;/li&gt;
+&lt;li&gt;... the Dictator accept the MR/PR&lt;/li&gt;
+&lt;li&gt;The changes are automatically merged (80% of the times, maybe some part have to be done manually, thank you .pbxproj) and deploy on the main repo, the upstream one !&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;all other devs just have to pull on their own forked to get the changes !&lt;/p&gt;
+
+&lt;p&gt;Again, if you want better or deeper explanations, Atlassian is your friend: &lt;a href="https://fr.atlassian.com/git/tutorials/comparing-workflows/forking-workflow"&gt;Forking Workflow&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id="dependencymanagers"&gt;Dependency managers&lt;/h2&gt;
+
+&lt;p&gt;Every good iOS developer is a lazy developer, that's a fact: you don't want to re-re-re-re-re-re-rewrite the same model, the same HTTP Client or the same Custom 3D popup View Of The Death. And you don't even think to pull an update of these really cool stuffs, afraid to put a time bomb on your project. For this, you can use dependency managers.&lt;/p&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://www.appletouch.fr/wp-content/uploads/2010/12/logo-package-cydia.png" alt="Package Logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;Dependency managers allow you to use the KISS spirit: Keep It Simple Stuff. &lt;br&gt;
+No need to re-invent known and very well done stuff (who said AFNetwork ?), get errors when you want to add this beautiful CryptographicOfTheDeath.bundle or when you have the best red lines in xCode: "Duplicate Symbols for ARM64" ... yay ! &lt;/p&gt;
+
+&lt;h3 id="cocoapods"&gt;Cocoapods&lt;/h3&gt;
+
+&lt;p&gt;&lt;center&gt;&lt;img src="http://blog.newrelic.com/wp-content/uploads/cocoapods-2.jpg" alt="Cocoapods logo" title=""&gt;&lt;/center&gt;&lt;/p&gt;
+
+&lt;p&gt;The TOP 1 tool for all iOS developers is Cocoapods: it allows you to add any correct repo on your xcode project and use it just by adding one line of script. It depends of a file, named Podfile, and created by yourself at the root of your project and is presented like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;platform :ios, '8.0'
+use_frameworks!
+
+target 'MyApp' do
+  pod 'AFNetworking', '~&amp;gt; 2.5'
+  pod 'ORStackView', '~&amp;gt; 2.0'
+  pod 'SwiftyJSON', '~&amp;gt; 2.1'
+end
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Just with this, you are able to create a .xcworkspace containing your project and all of these awesome frameworks, just by tapping on your Terminal:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pod install
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And magic happen. No injection error, no duplicate symbols, everything rocks. You now want to use AFNetworking ? just put it on your file like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#import &amp;lt;AFNetworking/AFnetworking.h&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;the main drawbacks of Cocoapods is its solution: it's intrusive in your code (you have to open a xcworkspace) and not all libraries can be pulled by Cocoapods, they need to be known in the Cocoapods database. Not like Carthage.&lt;/p&gt;
+
+&lt;p&gt;If you want more informations about Cocoapods --&gt; &lt;a href="https://cocoapods.org"&gt;here&lt;/a&gt; &lt;/p&gt;
+
+&lt;h3 id="carthage"&gt;Carthage&lt;/h3&gt;
+
+&lt;p&gt;Instead of Cocoapods, Carthage allow you to inject all (well done) repositories you want, package it into static or dynamic libs and give you beautifuls .framework. &lt;br&gt;
+When Cocoapods is easier to use, Carthage need to create some manual stuff, like importation and XocdeProject modifications, but can be done easily, and maybe automatically done in a beautilful high end Carthage script.&lt;/p&gt;
+
+&lt;p&gt;The solution is based on a Cartfile, which list all of the framework you want with their repos:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;github "Carthage/ReactiveTask" "0.7-beta.2"
+github "thoughtbot/Argo" ~&amp;gt; 1.0.1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Not a pod install to do, but a &lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;carthage update
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;And your framework are done ! You 'just' have to integrate it (but again, I pretty sure this part can be automatically done)&lt;/p&gt;
+
+&lt;p&gt;If you want more informations about Carthage --&gt; &lt;a href="https://github.com/Carthage/Carthage"&gt;here&lt;/a&gt; &lt;/p&gt;</content:encoded></item><item><title>TOP 10 Mobile Security Threats - OWASP</title><description>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29-2.png" alt="TOP 10 OWASP iOS"&gt;&lt;/p&gt;
+
+&lt;p&gt;This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the &lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/"&gt;https://www.owasp.org/index.php/OWASP&lt;em&gt;Mobile&lt;/em&gt;Security_Project OWASP Mobile Top 10 Risks&lt;/a&gt; list.&lt;/p&gt;</description><link>http://localhost:2368/top-10-mobile-security-threats-owasp/</link><guid isPermaLink="false">2e22097f-f555-4d76-b9ac-8a8ab8d67a7d</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Fri, 05 Jun 2015 06:47:46 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/800px-2014-01-26_20-23-29-2.png" alt="TOP 10 OWASP iOS"&gt;&lt;/p&gt;
+
+&lt;p&gt;This document is written for iOS app developers and is intended to provide a set of basic pointers to vital aspects of developing secure apps for Apple’s iOS operating system. It follows the &lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/"&gt;https://www.owasp.org/index.php/OWASP&lt;em&gt;Mobile&lt;/em&gt;Security_Project OWASP Mobile Top 10 Risks&lt;/a&gt; list.&lt;/p&gt;
+
+&lt;h3 id="basics"&gt;Basics&lt;/h3&gt;
+
+&lt;p&gt;From a user perspective, two of the best things one can do to protect her iOS device are: enable strong passwords, and [https://www.owasp.org/index.php/Mobile&lt;em&gt;Jailbreaking&lt;/em&gt;Cheat_Sheet refrain from jailbreaking the device]. For developers, both of these issues are problematic, as they are not verifiable within an app’s sandbox environment. (Apple previously had an API for testing devices to see if they are jailbroken, but that API was deprecated in 2010.) For enterprises, strong passwords, along with dozens of other security configuration attributes can be managed and enforced via a Mobile Device Management (MDM) product. Small businesses and individuals with multiple devices can use Apple’s iPhone Configuration Utility (&lt;a href="http://www.apple.com/support/iphone/enterprise/"&gt;http://www.apple.com/support/iphone/enterprise/&lt;/a&gt;) and Apple Configurator (available in the Mac App Store) to build secure configuration profiles and deploy them on multiple devices.&lt;/p&gt;
+
+&lt;h3 id="remediationstoowaspmobiletop10risks"&gt;Remediation’s to OWASP Mobile Top 10 Risks&lt;/h3&gt;
+
+&lt;h3 id="insecuredatastoragem1"&gt;Insecure Data Storage (M1)&lt;/h3&gt;
+
+&lt;p&gt;Without a doubt, the biggest risk faced by mobile device consumers comes from a lost or stolen device. The information stored on the device is thus exposed to anyone who finds or steals another person’s device. It is largely up to the apps on the device to provide adequate protection of any data they store. Apple’s iOS provides several mechanisms for protecting data. These built in protections are quite adequate for most consumer-grade information. For more stringent security requirements (e.g., financial data), additional protections beyond those provided by Apple can be built into an application.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general, an app should store locally only the data that is required to perform its functional tasks. This includes side channel data such as system logging (see M8 below). For any form of sensitive data, storing plaintext data storage in an app’s sandbox (e.g., ~/Documents/* ) should always be avoided. Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. &lt;br&gt;
+* Small amounts of consumer grade sensitive data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of consumer-grade data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+* More data that exceeds normal consumer-grade sensitivity, if it absolutely must be stored locally, consider using a third party container encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see &lt;a href="http://sqlcipher.net"&gt;http://sqlcipher.net&lt;/a&gt;). In doing this, proper key management is of utmost importance -- and beyond the scope of this document.
+* For items stored in the keychain leverage the most secure API designation, kSecAttrAccessibleWhenUnlocked (now the default in iOS 5/6)
+* Avoid using NSUserDefaults to store sensitive pieces of information
+* Be aware that all data/entities using NSManagedObects will be stored in an unencrypted database file.&lt;/p&gt;
+
+&lt;h3 id="weakserversidecontrolsm2"&gt;Weak Server Side Controls (M2)&lt;/h3&gt;
+
+&lt;p&gt;Although most server side controls are in fact necessary to handle on the server side — and as such we refer the reader to the [[Web Service Security Cheat Sheet]]—there are several things that can be done on the mobile that aid in the work to be done on the server.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement the mobile client and the server to support a common set of security requirements. For example, information deemed sensitive on the server should be handled with equivalent due caution on the client side. &lt;br&gt;
+Perform positive input validation and canonicalization on all client-side input data. Use regular expressions and other mechanisms to ensure that only allowable data may enter the application at the client end. &lt;br&gt;
+Perform output encoding on untrusted data where feasible.&lt;/p&gt;
+
+&lt;h3 id="insufficienttransportlayerprotectionm3"&gt;Insufficient Transport Layer Protection (M3)&lt;/h3&gt;
+
+&lt;p&gt;Exposing sensitive data to eavesdropping attacks is a common issue with all networked applications, and iOS mobile apps are no exception.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement all apps under the assumption that they will be used on the most wide-open Wi-Fi networks on the planet. &lt;br&gt;
+Make an inventory of all app data that must be protected while in transit. (Protections should include confidentiality as well as integrity.) The inventory should include authentication tokens, session tokens, as well as application data directly. &lt;br&gt;
+Ensure SSL/TLS encryption is used when transmitting or receiving all inventoried data. (See CFNetwork Programming Guide.) &lt;br&gt;
+Ensure your app only accepts properly validated SSL certificates. (CA chain validation is routinely disabled in testing environments; ensure your app has removed any such code prior to public release.) &lt;br&gt;
+Verify through dynamic testing that all inventoried data is adequately protected throughout the operation of the app. &lt;br&gt;
+Verify through dynamic testing that forged, self-signed, etc., certificates cannot be accepted by the app under any circumstances.&lt;/p&gt;
+
+&lt;h3 id="clientsideinjectionm4"&gt;Client Side Injection (M4)&lt;/h3&gt;
+
+&lt;p&gt;Data injection attacks are as real in mobile apps as they are in web apps, although the attack scenarios tend to differ (e.g., exploiting URL schemes to send premium text messages or toll phone calls).  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general, follow the same rules as a web app for input validation and output escaping. &lt;br&gt;
+Canonicalize and positively validate all data input. &lt;br&gt;
+Use parameterized queries, even for local SQLite/SQLcipher calls. &lt;br&gt;
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. &lt;br&gt;
+When building a hybrid web/mobile app, keep the native/local capabilities of the app to a bare minimum required. That is, maintain control of all UIWebView content and pages, and prevent the user from accessing arbitrary, untrusted web content.  &lt;/p&gt;
+
+&lt;h3 id="poorauthorizationandauthenticationm5"&gt;Poor Authorization and Authentication (M5)&lt;/h3&gt;
+
+&lt;p&gt;Although largely a server side control, some mobile features (e.g., unique device identifiers) and common uses can exacerbate the problems surrounding securely authenticating and authorizing users and other entities.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;In general follow the same rules as a web app for authentication and authorization. &lt;br&gt;
+Never use a device identifier (e.g., UDID , IP number, MAC address, IMEI) to identify a user or session. &lt;br&gt;
+Avoid when possible “out-of-band” authentication tokens sent to the same device as the user is using to log in (e.g., SMS to the same iPhone). &lt;br&gt;
+Implement strong server side authentication, authorization, and session management (control # 4.1-4.6). &lt;br&gt;
+Authenticate all API calls to paid resources (control 8.4).  &lt;/p&gt;
+
+&lt;h3 id="impropersessionhandlingm6"&gt;Improper Session Handling (M6)&lt;/h3&gt;
+
+&lt;p&gt;Similarly, session handling is in general, principally a server task, but mobile devices tend to amplify traditional problems in unforeseen ways. For example, on mobile devices, “sessions” often last far longer than on traditional web applications.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;For the most part, follow sound session management practices as you would for a web application, with a few twists that are specific to mobile devices. &lt;br&gt;
+Never use a device identifier (e.g., UDID, IP number, MAC address, IMEI) to identify a session. (Control 1.13) &lt;br&gt;
+Use only tokens that can be quickly revoked in the event of a lost/stolen device, or compromised session. &lt;br&gt;
+Protect the confidentiality and integrity of session tokens at all times (e.g., always use SSL/TLS when transmitting). &lt;br&gt;
+Use only trustworthy sources for generating sessions.  &lt;/p&gt;
+
+&lt;h3 id="securitydecisionsviauntrustedinputsm7"&gt;Security Decisions via Untrusted Inputs (M7)&lt;/h3&gt;
+
+&lt;p&gt;While iOS does not give apps many channels for communicating among themselves, some exist—and can be abused by an attacker via data injection attacks, malicious apps, etc.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;The combination of input validation, output escaping, and authorization controls can be used against these weaknesses. &lt;br&gt;
+Canonicalize and positively validate all input data, particularly at boundaries between apps. &lt;br&gt;
+When using URL schemes, take extra care in validating and accepting input, as any app on the device is able to call a URL scheme. &lt;br&gt;
+Contextually escape all untrusted data output, so that it cannot change the intent of the output itself. &lt;br&gt;
+Verify the caller is permitted to access any requested resources. If appropriate, prompt the user to allow/disallow access to the requested resource.  &lt;/p&gt;
+
+&lt;h3 id="sidechanneldataleakagem8"&gt;Side Channel Data Leakage (M8)&lt;/h3&gt;
+
+&lt;p&gt;Side channels refer here to data I/O generally used for administrative or non-functional (directly) purposes, such as web caches (used to optimize browser speed), keystroke logs (used for spell checking), and similar. Apple’s iOS presents several opportunities for side channel data to inadvertently leak from an app, and that data is often available to anyone who has found or stolen a victim’s device. Most of these can be controlled programmatically in an app.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Design and implement all apps under the assumption that the user’s device will be lost or stolen. &lt;br&gt;
+Start by identifying all potential side channel data present on a device. These sources should include, at a bare minimum: web caches, keystroke logs, screen shots, system logs, and cut-and-paste buffers. Be sure to include any third party libraries used. &lt;br&gt;
+Never include sensitive data (e.g., credentials, tokens, PII) in system logs. &lt;br&gt;
+Control iOS’s screenshot behavior to prevent sensitive app data from being captured when an app is minimized. &lt;br&gt;
+Disable keystroke logging for the most sensitive data, to prevent it from being stored in plaintext on the device. &lt;br&gt;
+Disable cut-and-paste buffer for the most sensitive data, to prevent it from being leaked outside of the app. &lt;br&gt;
+Dynamically test the app, including its data stores and communications channels, to verify that no sensitive data is being inappropriately transmitted or stored.  &lt;/p&gt;
+
+&lt;h3 id="brokencryptographym9"&gt;Broken Cryptography (M9)&lt;/h3&gt;
+
+&lt;p&gt;Although the vast majority of cryptographic weaknesses in software result from poor key management, all aspects of a crypto system should be carefully designed and implemented. Mobile apps are no different in that regard.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Never “hard code” or store cryptographic keys where an attacker can trivially recover them. This includes plaintext data files, properties files, and compiled binaries. &lt;br&gt;
+Use secure containers for storing crypto keys; alternately, build a secure key exchange system where the key is controlled by a secure server, and never stored locally on the mobile device. &lt;br&gt;
+Use only strong crypto algorithms and implementations, including key generation tools, hashes, etc. &lt;br&gt;
+Use platform crypto APIs when feasible; use trusted third party code when not. &lt;br&gt;
+Consumer-grade sensitive data should be stored in secure containers using Apple-provided APIs. &lt;br&gt;
+* Small amounts of data, such as user authentication credentials, session tokens, etc., can be securely stored in the device’s Keychain (see Keychain Services Reference in Apple’s iOS Developer Library).
+* For larger, or more general types of data, Apple’s File Protection mechanism can safely be used (see NSData Class Reference for protection options).
+To more securely protect static data, consider using a third party encryption API that is not encumbered by the inherent weaknesses in Apple’s encryption (e.g., keying tied to user’s device passcode, which is often a 4-digit PIN). Freely available examples include SQLcipher (see &lt;a href="http://sqlcipher.net"&gt;http://sqlcipher.net&lt;/a&gt;).&lt;/p&gt;
+
+&lt;h3 id="sensitiveinformationdisclosurem10"&gt;Sensitive Information Disclosure (M10)&lt;/h3&gt;
+
+&lt;p&gt;All sorts of sensitive data can leak out of iOS apps. Among other things to remember at all times, each app’s compiled binary code is available on the device, and can be reverse engineered by a determined adversary.  &lt;/p&gt;
+
+&lt;h6 id="remediations"&gt;Remediations&lt;/h6&gt;
+
+&lt;p&gt;Anything that must truly remain private should not reside on the mobile device; keep private information (e.g., algorithms, proprietary information) on the server. &lt;br&gt;
+If private information must be present on a mobile device, ensure it remains in process memory and is never unprotected if it is stored on the device. &lt;br&gt;
+Never hard code or otherwise trivially store passwords, session tokens, etc. &lt;br&gt;
+Strip binaries prior to shipping, and be aware that compiled executable files can still be reverse engineered.&lt;/p&gt;
+
+&lt;h3 id="referencesandfurtherreading"&gt;References and Further Reading&lt;/h3&gt;
+
+&lt;p&gt;OWASP Top 10 Mobile Risks presentation, Appsec USA, Minneapolis, MN, 23 Sept 2011. Jack Mannino, Mike Zusman, and Zach Lanier.&lt;/p&gt;
+
+&lt;p&gt;“iOS Security”, Apple, October 2014 &lt;a href="https://www.apple.com/business/docs/iOS"&gt;https://www.apple.com/business/docs/iOS&lt;/a&gt;&lt;em&gt;Security&lt;/em&gt;Guide&lt;em&gt;Oct&lt;/em&gt;2014.pdf&lt;/p&gt;
+
+&lt;p&gt;“Deploying iPhone and iPad: Apple Configurator”, Apple, March 2012, &lt;a href="http://images.apple.com/iphone/business/docs/iOS"&gt;http://images.apple.com/iphone/business/docs/iOS&lt;/a&gt;&lt;em&gt;Apple&lt;/em&gt;Configurator_Mar12.pdf &lt;/p&gt;
+
+&lt;p&gt;“iPhone OS: Enterprise Deployment Guide”, Apple, 2010, &lt;a href="http://manuals.info.apple.com/en"&gt;http://manuals.info.apple.com/en&lt;/a&gt;&lt;em&gt;US/Enterprise&lt;/em&gt;Deployment_Guide.pdf &lt;/p&gt;
+
+&lt;p&gt;“iPhone in Business”, Apple resources, &lt;a href="http://www.apple.com/iphone/business/resources/"&gt;http://www.apple.com/iphone/business/resources/&lt;/a&gt; &lt;/p&gt;
+
+&lt;p&gt;Apple iOS Developer website.&lt;/p&gt;
+
+&lt;p&gt;"iOS Application (in)Security", MDSec - May 2012, &lt;a href="http://www.mdsec.co.uk/research/iOS"&gt;http://www.mdsec.co.uk/research/iOS&lt;/a&gt;&lt;em&gt;Application&lt;/em&gt;Insecurity&lt;em&gt;wp&lt;/em&gt;v1.0_final.pdf&lt;/p&gt;
+
+&lt;h3 id="sources"&gt;Sources&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/top-10-mobile-security-threats-owasp/OWASP Wiki Cheat Sheet"&gt;https://www.owasp.org/index.php/IOS&lt;em&gt;Developer&lt;/em&gt;Cheat_Sheet&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Resume</title><description>iOS Developer Resume - Julien Goudet - Lyon France - julien gdt - jlngdt</description><link>http://localhost:2368/resume/</link><guid isPermaLink="false">1b2c499b-682c-474e-a333-9a3d36637017</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 08:45:58 GMT</pubDate><content:encoded>&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/06/DM4C7350.jpg" alt="header resume"&gt;&lt;/p&gt;
+
+&lt;h1 id="juliengoudet"&gt;Julien Goudet&lt;/h1&gt;
+
+&lt;h2 id="2yearsiosdeveloperdigitalbank"&gt;2 years iOS Developer - Digital Bank&lt;/h2&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Offline Resume: &lt;a href="http://localhost:2368/resume/"&gt;Download PDF (Soon)&lt;/a&gt;  &lt;/p&gt;
+  
+  &lt;p&gt;Mail: &lt;a href="mailto:juliengdt@icloud.com?subject=Hello, i just saw your Ghost Blog !"&gt;juliengdt@icloud.com&lt;/a&gt; &lt;/p&gt;
+  
+  &lt;p&gt;Phone: &lt;a href="tel:+33646099017"&gt;+33646099017&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;a href="https://twitter.com/jlngdt"&gt;&lt;img src="http://localhost:2368/content/images/static/twitter_icon.png" alt="Twitter" title=""&gt;&lt;/a&gt; &lt;a href="https://github.com/juliengdt"&gt;&lt;img src="http://localhost:2368/content/images/static/github_icon.png" alt="GitHub" title=""&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="profileprofile"&gt;Profile {#profile}&lt;/h3&gt;
+
+&lt;p&gt;Born with a Sega MegaDrive and the first mobile phones, my main aim in my pro life is to build something unique, something I want to be proud of, something respectable. I love my job, coding bunches of lines, ViewControllers and great iPhone apps. &lt;/p&gt;
+
+&lt;p&gt;With 2 years of experience in iOS Objective-C (and Swift now), I'm always looking for great mobile projects to participate in. &lt;/p&gt;
+
+&lt;p&gt;And this is me:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/static/jlngdt_rounded.png" alt="Headshot"&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="skillsskills"&gt;Skills {#skills}&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;iOS Development&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Objective-C &amp;amp; Swift (1.2)&lt;/li&gt;
+&lt;li&gt;AFNetworking + JSONModel = &amp;lt;3&lt;/li&gt;
+&lt;li&gt;Framework usage&lt;/li&gt;
+&lt;li&gt;Framework management like Cocoapods (Obj-C) and Carthage (Swift)&lt;/li&gt;
+&lt;li&gt;Framework Packaging (with or without UI inside)&lt;/li&gt;
+&lt;li&gt;iOS Mobile Security Coding (Trusted certificates, OWASP compliance, SSL, local handshake, local keychains ... etc)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Mobile Development&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Android (enough understood to troll my Android binom)&lt;/li&gt;
+&lt;li&gt;Git or Mercurial usage (git hooks usage)&lt;/li&gt;
+&lt;li&gt;Team Versioning (Merge/Pull Request)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Backend debugging/backup&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Basics manipulations: server start/stop, grep logs, find java exceptions and have a look at the source code.&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Interface Design&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Advanced Mobile UI&lt;/li&gt;
+&lt;li&gt;Photoshop (Basics and more)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Project Spirit&lt;/p&gt;
+
+&lt;ul&gt;&lt;li&gt;Scrum/Agile methods&lt;/li&gt;
+&lt;li&gt;External Testing with clients&lt;/li&gt;
+&lt;li&gt;JIRA usage for bug-tracking and time-tracking&lt;/li&gt;
+&lt;li&gt;Can easily be in contact with end clients (kick-off/daily meetings, bills)&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="technicallinkstechnicallinks"&gt;Technical Links {#technicallinks}&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;a href="https://github.com/AFNetworking/AFNetworking"&gt;AFNetworking 2.0&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/icanzilb/JSONModel"&gt;JSONModel&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Carthage/Carthage"&gt;Carthage - Swift Package Manager&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Alamofire/Alamofire"&gt;Alamofire - Swift Networking&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/realm/jazzy"&gt;Jazzy - Swift Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tomaz/appledoc"&gt;Appledoc - Obj-C Documentation&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/zwaldowski/BlocksKit"&gt;BlocksKit&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://www.atlassian.com/software/jira"&gt;Atlassian JIRA&lt;/a&gt;  &lt;/li&gt;
+&lt;li&gt;&lt;a href="https://about.gitlab.com/"&gt;Gitlab&lt;/a&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="experienceexperience"&gt;Experience {#experience}&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://worldline.com/en-us/home/about-us.html"&gt;Worldline, an Atos Company&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;iOS Developer&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Paylib Solution &lt;a href="http://www.paylib.fr/"&gt;(website)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;La Banque Postale wallet application &lt;a href="https://itunes.apple.com/fr/app/mes-paiements/id699406767?mt=8"&gt;(Mes Paiements)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;BNP Paribas iOS wallet applications &lt;a href="https://itunes.apple.com/us/app/mon-portefeuille-hello-bank!/id705889374?l=fr&amp;amp;ls=1&amp;amp;mt=8"&gt;(1)&lt;/a&gt; &amp;amp; &lt;a href="https://itunes.apple.com/fr/app/mon-portefeuille-bnp-paribas/id676059019?mt=8"&gt;(2)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Participate in Société Générale iOS app &lt;a href="https://itunes.apple.com/fr/app/lappli-societe-generale-pour/id376991016?mt=8"&gt;(L'appli)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://www.egdigital.fr/"&gt;EG Digital&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;iOS Intern Developer&lt;/em&gt; &lt;strong&gt;2012-2012&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Euronews App (iPad UI) &lt;a href="https://itunes.apple.com/fr/app/euronews/id555667472?mt=8"&gt;(Euronews)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Jazz Radio - iOS Streaming app &lt;a href="https://itunes.apple.com/fr/app/jazz-radio/id608871294?mt=8"&gt;Jazz Radio&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="educationeducation"&gt;Education {#education}&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href="http://esirem.u-bourgogne.fr/"&gt;ESIREM&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;InfoTronic Engineer&lt;/em&gt; &lt;strong&gt;2011-2013&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Mobile development&lt;/li&gt;
+&lt;li&gt;Electronic development&lt;/li&gt;
+&lt;li&gt;Embedded Linux&lt;/li&gt;
+&lt;li&gt;Embedded System&lt;/li&gt;
+&lt;li&gt;ElectroMagnetism&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://www.polytech-grenoble.fr/3i.html"&gt;Polytech Grenoble&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;Informatic Engineer&lt;/em&gt; &lt;strong&gt;2010-2011&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Embedded Linux&lt;/li&gt;
+&lt;li&gt;Embedded System&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;a href="http://lyc21-eiffel.ac-dijon.fr/fr/formsup/ats/formation/"&gt;ATS&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;Preparatory Course - Mathematics&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="http://localhost:2368/resume/"&gt;Advanced Diploma in Electronics&lt;/a&gt;&lt;br&gt;
+&lt;em&gt;BAC+BTS (french main diploma + 2 years) in electronics&lt;/em&gt; &lt;strong&gt;2013-2015&lt;/strong&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;h3 id="footerfooter"&gt;Footer {#footer}&lt;/h3&gt;
+
+&lt;p&gt;Julien Goudet -- &lt;a href="http://localhost:2368/resume/juliengdt@icloud.com"&gt;juliengdt@icloud.com&lt;/a&gt; -- (+33) 0646099017&lt;/p&gt;
+
+&lt;hr&gt;</content:encoded></item><item><title>Swift Style Guide</title><description>&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on&lt;/p&gt;</description><link>http://localhost:2368/swift-style-guide/</link><guid isPermaLink="false">f7733e36-6afa-4605-8a72-adec02deedfb</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 07:31:52 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png" alt="Swift Style Guide"&gt;&lt;p&gt;This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.&lt;/p&gt;
+
+&lt;p&gt;Our overarching goals are conciseness, readability, and simplicity.&lt;/p&gt;
+
+&lt;p&gt;Writing Objective-C? Check out our &lt;a href="https://github.com/raywenderlich/objective-c-style-guide"&gt;Objective-C Style Guide&lt;/a&gt; too.&lt;/p&gt;
+
+&lt;h2 id="tableofcontents"&gt;Table of Contents&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#naming"&gt;Naming&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#prose"&gt;Prose&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#class-prefixes"&gt;Class Prefixes&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#spacing"&gt;Spacing&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#comments"&gt;Comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#classes-and-structures"&gt;Classes and Structures&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#use-of-self"&gt;Use of Self&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#protocol-conformance"&gt;Protocol Conformance&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#computed-properties"&gt;Computed Properties&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#function-declarations"&gt;Function Declarations&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#closure-expressions"&gt;Closure Expressions&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#types"&gt;Types&lt;/a&gt;
+&lt;ul&gt;&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#constants"&gt;Constants&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#optionals"&gt;Optionals&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#struct-initializers"&gt;Struct Initializers&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#type-inference"&gt;Type Inference&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#syntactic-sugar"&gt;Syntactic Sugar&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#control-flow"&gt;Control Flow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#semicolons"&gt;Semicolons&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#language"&gt;Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#smiley-face"&gt;Smiley Face&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="http://localhost:2368/swift-style-guide/#credits"&gt;Credits&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="naming"&gt;Naming&lt;/h2&gt;
+
+&lt;p&gt;Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;private let maximumWidgetCount = 100
+
+class WidgetContainer {  
+  var widgetButton: UIButton
+  let widgetHeightPercentage = 0.85
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let MAX_WIDGET_COUNT = 100
+
+class app_widgetContainer {  
+  var wBut: UIButton
+  let wHeightPct = 0.85
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func dateFromString(dateString: String) -&amp;gt; NSDate  
+func convertPointAt(#column: Int, #row: Int) -&amp;gt; CGPoint  
+func timedAction(#delay: NSTimeInterval, perform action: SKAction) -&amp;gt; SKAction!
+
+// would be called like this:
+dateFromString("2014-03-14")  
+convertPointAt(column: 42, row: 13)  
+timedAction(delay: 1.0, perform: someOtherAction)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For methods, follow the standard Apple convention of referring to the first parameter in the method name:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class Guideline {  
+  func combineWithString(incoming: String, options: Dictionary?) { ... }
+  func upvoteBy(amount: Int) { ... }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="enumerations"&gt;Enumerations&lt;/h3&gt;
+
+&lt;p&gt;Use UpperCamelCase for enumeration values:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;enum Shape {  
+  case Rectangle
+  case Square
+  case Triangle
+  case Circle
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="prose"&gt;Prose&lt;/h3&gt;
+
+&lt;p&gt;When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or &lt;code&gt;_&lt;/code&gt; for unnamed parameters.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Call &lt;code&gt;convertPointAt(column:row:)&lt;/code&gt; from your own &lt;code&gt;init&lt;/code&gt; implementation.&lt;/p&gt;
+  
+  &lt;p&gt;If you call &lt;code&gt;dateFromString(_:)&lt;/code&gt; make sure that you provide a string with the format "yyyy-MM-dd".&lt;/p&gt;
+  
+  &lt;p&gt;If you call &lt;code&gt;timedAction(delay:perform:)&lt;/code&gt; from &lt;code&gt;viewDidLoad()&lt;/code&gt; remember to provide an adjusted delay value and an action to perform.&lt;/p&gt;
+  
+  &lt;p&gt;You shouldn't call the data source method &lt;code&gt;tableView(_:cellForRowAtIndexPath:)&lt;/code&gt; directly.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/05/xcode-jump-bar.png" alt="Swift Style Guide"&gt;&lt;/p&gt;
+
+&lt;h3 id="classprefixes"&gt;Class Prefixes&lt;/h3&gt;
+
+&lt;p&gt;Swift types are automatically namespaced by the module that contains them and you should not add a class prefix. If two names from different modules collide you can disambiguate by prefixing the type name with the module name.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;import SomeModule
+
+let myClass = MyModule.UsefulClass()  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="spacing"&gt;Spacing&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode as shown below:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src="http://localhost:2368/content/images/2015/05/indentation.png" alt="Swift Style Guide" title=""&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Method braces and other braces (&lt;code&gt;if&lt;/code&gt;/&lt;code&gt;else&lt;/code&gt;/&lt;code&gt;switch&lt;/code&gt;/&lt;code&gt;while&lt;/code&gt; etc.) always open on the same line as the statement but close on a new line.&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if user.isHappy {  
+  // Do something
+} else {
+  // Do something else
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if user.isHappy  
+{
+    // Do something
+}
+else {  
+    // Do something else
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id="comments"&gt;Comments&lt;/h2&gt;
+
+&lt;p&gt;When they are needed, use comments to explain &lt;strong&gt;why&lt;/strong&gt; a particular piece of code does something. Comments must be kept up-to-date or deleted.&lt;/p&gt;
+
+&lt;p&gt;Avoid block comments inline with code, as the code should be as self-documenting as possible. &lt;em&gt;Exception: This does not apply to those comments used to generate documentation.&lt;/em&gt;&lt;/p&gt;
+
+&lt;h2 id="classesandstructures"&gt;Classes and Structures&lt;/h2&gt;
+
+&lt;h3 id="whichonetouse"&gt;Which one to use?&lt;/h3&gt;
+
+&lt;p&gt;Remember, structs have &lt;a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_144"&gt;value semantics&lt;/a&gt;. Use structs for things that do not have an identity. An array that contains [a, b, c] is really the same as another array that contains [a, b, c] and they are completely interchangeable. It doesn't matter whether you use the first array or the second, because they represent the exact same thing. That's why arrays are structs.&lt;/p&gt;
+
+&lt;p&gt;Classes have &lt;a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_145"&gt;reference semantics&lt;/a&gt;. Use classes for things that do have an identity or a specific life cycle. You would model a person as a class because two person objects are two different things. Just because two people have the same name and birthdate, doesn't mean they are the same person. But the person's birthdate would be a struct because a date of 3 March 1950 is the same as any other date object for 3 March 1950. The date itself doesn't have an identity.&lt;/p&gt;
+
+&lt;p&gt;Sometimes, things should be structs but need to conform to &lt;code&gt;AnyObject&lt;/code&gt; or are historically modeled as classes already (&lt;code&gt;NSDate&lt;/code&gt;, &lt;code&gt;NSSet&lt;/code&gt;). Try to follow these guidelines as closely as possible.&lt;/p&gt;
+
+&lt;h3 id="exampledefinition"&gt;Example definition&lt;/h3&gt;
+
+&lt;p&gt;Here's an example of a well-styled class definition:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class Circle: Shape {  
+  var x: Int, y: Int
+  var radius: Double
+  var diameter: Double {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
+
+  init(x: Int, y: Int, radius: Double) {
+    self.x = x
+    self.y = y
+    self.radius = radius
+  }
+
+  convenience init(x: Int, y: Int, diameter: Double) {
+    self.init(x: x, y: y, radius: diameter / 2)
+  }
+
+  func describe() -&amp;gt; String {
+    return "I am a circle at \(centerString()) with an area of \(computeArea())"
+  }
+
+  override func computeArea() -&amp;gt; Double {
+    return M_PI * radius * radius
+  }
+
+  private func centerString() -&amp;gt; String {
+    return "(\(x),\(y))"
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The example above demonstrates the following style guidelines:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. &lt;code&gt;x: Int&lt;/code&gt;, and &lt;code&gt;Circle: Shape&lt;/code&gt;.&lt;/li&gt;
+&lt;li&gt;Define multiple variables and structures on a single line if they share a common purpose / context.&lt;/li&gt;
+&lt;li&gt;Indent getter and setter definitions and property observers.&lt;/li&gt;
+&lt;li&gt;Don't add modifiers such as &lt;code&gt;internal&lt;/code&gt; when they're already the default. Similarly, don't repeat the access modifier when overriding a method.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id="useofself"&gt;Use of Self&lt;/h3&gt;
+
+&lt;p&gt;For conciseness, avoid using &lt;code&gt;self&lt;/code&gt; since Swift does not require it to access an object's properties or invoke its methods.&lt;/p&gt;
+
+&lt;p&gt;Use &lt;code&gt;self&lt;/code&gt; when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class BoardLocation {  
+  let row: Int, column: Int
+
+  init(row: Int, column: Int) {
+    self.row = row
+    self.column = column
+
+    let closure = {
+      println(self.row)
+    }
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="protocolconformance"&gt;Protocol Conformance&lt;/h3&gt;
+
+&lt;p&gt;When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.&lt;/p&gt;
+
+&lt;p&gt;Also, don't forget the &lt;code&gt;// MARK: -&lt;/code&gt; comment to keep things well-organized!&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class MyViewcontroller: UIViewController {  
+  // class stuff here
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {  
+  // table view data source methods
+}
+
+// MARK: - UIScrollViewDelegate
+extension MyViewcontroller: UIScrollViewDelegate {  
+  // scroll view delegate methods
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {  
+  // all methods
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="computedproperties"&gt;Computed Properties&lt;/h3&gt;
+
+&lt;p&gt;For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var diameter: Double {  
+  return radius * 2
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var diameter: Double {  
+  get {
+    return radius * 2
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="functiondeclarations"&gt;Function Declarations&lt;/h2&gt;
+
+&lt;p&gt;Keep short function declarations on one line including the opening brace:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func reticulateSplines(spline: [Double]) -&amp;gt; Bool {  
+  // reticulate code goes here
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;func reticulateSplines(spline: [Double], adjustmentFactor: Double,  
+    translateConstant: Int, comment: String) -&amp;gt; Bool {
+  // reticulate code goes here
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="closureexpressions"&gt;Closure Expressions&lt;/h2&gt;
+
+&lt;p&gt;Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;UIView.animateWithDuration(1.0) {  
+  self.myView.alpha = 0
+}
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  },
+  completion: { finished in
+    self.myView.removeFromSuperview()
+  }
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;UIView.animateWithDuration(1.0, animations: {  
+  self.myView.alpha = 0
+})
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  }) { f in
+    self.myView.removeFromSuperview()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;For single-expression closures where the context is clear, use implicit returns:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;attendeeList.sort { a, b in  
+  a &amp;gt; b
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="types"&gt;Types&lt;/h2&gt;
+
+&lt;p&gt;Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let width = 120.0                                    // Double  
+let widthString = (width as NSNumber).stringValue    // String  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let width: NSNumber = 120.0                          // NSNumber  
+let widthString: NSString = width.stringValue        // NSString  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In Sprite Kit code, use &lt;code&gt;CGFloat&lt;/code&gt; if it makes the code more succinct by avoiding too many conversions.&lt;/p&gt;
+
+&lt;h3 id="constants"&gt;Constants&lt;/h3&gt;
+
+&lt;p&gt;Constants are defined using the &lt;code&gt;let&lt;/code&gt; keyword, and variables with the &lt;code&gt;var&lt;/code&gt; keyword. Always use &lt;code&gt;let&lt;/code&gt; instead of &lt;code&gt;var&lt;/code&gt; if the value of the variable will not change.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Tip:&lt;/strong&gt; A good technique is to define everything using &lt;code&gt;let&lt;/code&gt; and only change it to &lt;code&gt;var&lt;/code&gt; if the compiler complains!&lt;/p&gt;
+
+&lt;h3 id="optionals"&gt;Optionals&lt;/h3&gt;
+
+&lt;p&gt;Declare variables and function return types as optional with &lt;code&gt;?&lt;/code&gt; where a nil value is acceptable.&lt;/p&gt;
+
+&lt;p&gt;Use implicitly unwrapped types declared with &lt;code&gt;!&lt;/code&gt; only for instance variables that you know will be initialized later before use, such as subviews that will be set up in &lt;code&gt;viewDidLoad&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;self.textContainer?.textLabel?.setNeedsDisplay()  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Use optional binding when it's more convenient to unwrap once and perform multiple operations:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;if let textContainer = self.textContainer {  
+  // do many things with textContainer
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;When naming optional variables and properties, avoid naming them like &lt;code&gt;optionalString&lt;/code&gt; or &lt;code&gt;maybeView&lt;/code&gt; since their optional-ness is already in the type declaration.&lt;/p&gt;
+
+&lt;p&gt;For optional binding, shadow the original name when appropriate rather than using names like &lt;code&gt;unwrappedView&lt;/code&gt; or &lt;code&gt;actualLabel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var subview: UIView?  
+var volume: Double?
+
+// later on...
+if let subview = subview, volume = volume {  
+  // do something with unwrapped subview and volume
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var optionalSubview: UIView?  
+var volume: Double?
+
+if let unwrappedSubview = optionalSubview {  
+  if let realVolume = volume {
+    // do something with unwrappedSubview and realVolume
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id="structinitializers"&gt;Struct Initializers&lt;/h3&gt;
+
+&lt;p&gt;Use the native Swift struct initializers rather than the legacy CGGeometry constructors.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)  
+let centerPoint = CGPoint(x: 96, y: 42)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let bounds = CGRectMake(40, 20, 120, 80)  
+let centerPoint = CGPointMake(96, 42)  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Prefer the struct-scope constants &lt;code&gt;CGRect.infiniteRect&lt;/code&gt;, &lt;code&gt;CGRect.nullRect&lt;/code&gt;, etc. over global constants &lt;code&gt;CGRectInfinite&lt;/code&gt;, &lt;code&gt;CGRectNull&lt;/code&gt;, etc. For existing variables, you can use the shorter &lt;code&gt;.zeroRect&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h3 id="typeinference"&gt;Type Inference&lt;/h3&gt;
+
+&lt;p&gt;Prefer compact code and let the compiler infer the type for a constant or variable, unless you need a specific type other than the default such as &lt;code&gt;CGFloat&lt;/code&gt; or &lt;code&gt;Int16&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let message = "Click the button"  
+let currentBounds = computeViewBounds()  
+var names = [String]()  
+let maximumWidth: CGFloat = 106.5  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let message: String = "Click the button"  
+let currentBounds: CGRect = computeViewBounds()  
+var names: [String] = []  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Following this guideline means picking descriptive names is even more important than before.&lt;/p&gt;
+
+&lt;h3 id="syntacticsugar"&gt;Syntactic Sugar&lt;/h3&gt;
+
+&lt;p&gt;Prefer the shortcut versions of type declarations over the full generics syntax.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var deviceModels: [String]  
+var employees: [Int: String]  
+var faxNumber: Int?  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;var deviceModels: Array&amp;lt;String&amp;gt;  
+var employees: Dictionary&amp;lt;Int, String&amp;gt;  
+var faxNumber: Optional&amp;lt;Int&amp;gt;  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="controlflow"&gt;Control Flow&lt;/h2&gt;
+
+&lt;p&gt;Prefer the &lt;code&gt;for-in&lt;/code&gt; style of &lt;code&gt;for&lt;/code&gt; loop over the &lt;code&gt;for-condition-increment&lt;/code&gt; style.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;for _ in 0..&amp;lt;3 {  
+  println("Hello three times")
+}
+
+for (index, person) in enumerate(attendeeList) {  
+  println("\(person) is at position #\(index)")
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;for var i = 0; i &amp;lt; 3; i++ {  
+  println("Hello three times")
+}
+
+for var i = 0; i &amp;lt; attendeeList.count; i++ {  
+  let person = attendeeList[i]
+  println("\(person) is at position #\(i)")
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="semicolons"&gt;Semicolons&lt;/h2&gt;
+
+&lt;p&gt;Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.&lt;/p&gt;
+
+&lt;p&gt;Do not write multiple statements on a single line separated with semicolons.&lt;/p&gt;
+
+&lt;p&gt;The only exception to this rule is the &lt;code&gt;for-conditional-increment&lt;/code&gt; construct, which requires semicolons. However, alternative &lt;code&gt;for-in&lt;/code&gt; constructs should be used where possible.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let swift = "not a scripting language"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let swift = "not a scripting language";  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: Swift is very different to JavaScript, where omitting semicolons is &lt;a href="http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript"&gt;generally considered unsafe&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id="language"&gt;Language&lt;/h2&gt;
+
+&lt;p&gt;Use US English spelling to match Apple's API.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let color = "red"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class="language-swift"&gt;let colour = "red"  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="smileyface"&gt;Smiley Face&lt;/h2&gt;
+
+&lt;p&gt;Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket &lt;code&gt;]&lt;/code&gt; is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis &lt;code&gt;)&lt;/code&gt; creates a half-hearted smile, and thus is not preferred.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;Not Preferred:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;:)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id="creditsandsources"&gt;Credits and sources&lt;/h2&gt;
+
+&lt;p&gt;This style guide is a collaborative effort from the most stylish raywenderlich.com team members: &lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/jawwad"&gt;Jawwad Ahmad&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/moayes"&gt;Soheil Moayedi Azarpour&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/Scott90"&gt;Scott Berrevoets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ecerney"&gt;Eric Cerney&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/sammyd"&gt;Sam Davies&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/edekhayser"&gt;Evan Dekhayser&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/pdistler"&gt;Jean-Pierre Distler&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/ColinEberhardt"&gt;Colin Eberhardt&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/gregheo"&gt;Greg Heo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/hollance"&gt;Matthijs Hollemans&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/eskerber"&gt;Erik Kerber&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/elephantronic"&gt;Christopher LaPollo&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/benmorrow"&gt;Ben Morrow&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/macandyp"&gt;Andy Pereira&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rnystrom"&gt;Ryan Nystrom&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/funkyboy"&gt;Cesare Rocchi&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/designatednerd"&gt;Ellen Shapiro&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/icanzilb"&gt;Marin Todorov&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/cwagdev"&gt;Chris Wagner&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/rwenderlich"&gt;Ray Wenderlich&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/jackwu95"&gt;Jack Wu&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Hat tip to &lt;a href="https://github.com/ndubbs"&gt;Nicholas Waynik&lt;/a&gt; and the &lt;a href="https://github.com/raywenderlich/objective-c-style-guide"&gt;Objective-C Style Guide&lt;/a&gt; team!&lt;/p&gt;
+
+&lt;p&gt;We also drew inspiration from Apple’s reference material on Swift:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html"&gt;The Swift Programming Language&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html"&gt;Using Swift with Cocoa and Objective-C&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html"&gt;Swift Standard Library Reference&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;--&gt; &lt;a href="https://github.com/raywenderlich/swift-style-guide"&gt;SOURCES&lt;/a&gt; &amp;lt;--&lt;/p&gt;</content:encoded></item><item><title>Memory Safety: Ensuring Values are Defined Before Use</title><description>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;</description><link>http://localhost:2368/swift-memory-safety/</link><guid isPermaLink="false">4146af78-9303-4a55-a1d7-5ff2a7b237e6</guid><dc:creator>Julien Gdt</dc:creator><pubDate>Wed, 27 May 2015 06:49:37 GMT</pubDate><content:encoded>&lt;p&gt;A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.&lt;/p&gt;
+
+&lt;h3 id="theswiftapproach"&gt;The Swift Approach&lt;/h3&gt;
+
+&lt;p&gt;Variables are considered "safe" when the developer can be sure that there will be a valid value ready to use before any code tries to access it. Languages take several different approaches to this kind of safety. Some, like C, put the burden entirely on the programmer to employ safe programming techniques — a powerful approach, but riddled with risk. C++ and Objective-C improve the situation by enforcing some mandatory patterns, while other languages take extreme measures by requiring initialization at the point of definition.&lt;/p&gt;
+
+&lt;p&gt;The primary technique employed by Swift is to use our advanced compiler to perform dataflow analysis of the code. The compiler then enforces that each variable was initialized before it is used, a strategy known as [Definitive Initialization][1]. Languages such as Java and C# (among others) are known to also employ this technique. Swift uses an extended version of this approach for a broad range of variables.&lt;/p&gt;
+
+&lt;p&gt;Note: The bottom of this post includes information about other techniques, most of which Swift also employs to some degree.&lt;/p&gt;
+
+&lt;h3 id="definitiveinitializationoflocalvariables"&gt;Definitive Initialization of Local Variables&lt;/h3&gt;
+
+&lt;p&gt;Swift applies the rules of definitive initialization in many contexts, but the simplest use is for local variables. Definitive initialization gives you more flexibility than a "implicit default initialization" rule (&lt;em&gt;see below&lt;/em&gt;) would, because it allows you to write this code:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myInstance : MyClass
+
+if x &amp;gt; 42 {
+    myInstance = MyClass(intValue: 13)
+} else {
+    myInstance = MyClass(floatValue: 92.3)
+}
+
+myInstance.printIt()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Here the compiler can prove that both sides of the if statement are guaranteed to initialize myInstance, which proves that the method call can't use uninitialized memory.&lt;/p&gt;
+
+&lt;p&gt;Definitive initialization is a powerful approach, but it is only really useful if it is reliable and predictable. One place that this can lead to surprise is when you have more complex control flow, for example like this:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;var myInstance : MyClass
+
+if x &amp;gt; 10 {
+    myInstance = MyClass(intValue: 13)
+}
+
+if x &amp;gt; 42 {
+    myInstance.printIt()
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this case, the compiler will tell you: "Variable &lt;strong&gt;myInstance&lt;/strong&gt; used before initialized" on the call to printIt(). This is because the compiler does not track the correlation between the predicates in the if conditions. While we could teach the compiler to handle individual specific cases like this one, it is impossible to handle all cases (doing so is equivalent to the [halting problem][2]) so we opted to keep the compiler's rules simple and predictable.&lt;/p&gt;
+
+&lt;p&gt;Swift makes it extremely easy to initialize a variable. In fact, it is shorter to declare a variable as var x = 0 giving the variable the initial value 0 than it is to declare the uninitialized variable var x : Int. Swift favors explicitness of initialization whenever possible. There are also more powerful ways to initialize a variable when the situation calls for it using init(). For comprehensive information you can read the chapter "[Initialization][3]" in The Swift Programming Language.&lt;/p&gt;
+
+&lt;h3 id="otherapproaches"&gt;Other Approaches&lt;/h3&gt;
+
+&lt;p&gt;In addition to definitive initialization, Swift also employs additional approaches in focused areas of the language. You may have used these techniques in other languages, so we wanted to cover them briefly in this post. Each has some drawbacks, so they aren't used as Swift's primary approach:&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Leave safety to the programmer:&lt;/strong&gt; Given the prevalence of C, it was important to understand the pros and cons of simply leaving safety up to the developer. Unfortunately, use of an uninitialized value in C produces [undefined behavior][4], often leading to runtime explosions. C relies on the programmer to never make a mistake. Given that our goal was to make Swift "safe by default," this approach was quickly discarded for general use. However, APIs like UnsafePointer allow you to explicitly opt-in to unsafety when this power is absolutely necessary.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Implicit Default Initialization:&lt;/strong&gt; Values could be ensured to be safe by having the compiler implicitly initialize them, for example by setting a "zero value" like Objective-C does for instance variables, or by running default initializers like in C++. We explored this approach in depth, but ultimately decided against its broad use because:
+* This doesn't work for cases that have no legal initial value, e.g. protocols with no init() requirement, and non-nullable references to classes, which are pervasive in Swift.
+* Even for primitive types like integers 0 is often the wrong value. That's one reason setting the initial value is so easy in Swift. This also makes the code more obvious for those who will maintain it, as well as defining away a potential error of omission, e.g. when -1 is the right sentinel to use.&lt;/p&gt;
+
+&lt;p&gt;Note that default initialization to nil is clearly the right answer for nullable values so all values of Optional and ImplicitlyUnwrappedOptional type automatically initialize to nil by default.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Require an initializer at definition.&lt;/strong&gt; Put the burden on the developer to always provide an initial value at the time the variable is defined, meaning that var x : Int would be illegal without an initializer. While this is a common approach among functional languages, we considered this to be too heavy of a requirement because it enforces a very strict programming style, which gets in the way of expressing natural patterns.&lt;/p&gt;
+
+&lt;hr&gt;
+
+&lt;p&gt;&lt;a href="http://en.wikipedia.org/wiki/Definite_assignment_analysis"&gt;1&lt;/a&gt;
+&lt;a href="http://en.wikipedia.org/wiki/Halting_problem"&gt;2&lt;/a&gt;
+&lt;a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html"&gt;3&lt;/a&gt;
+&lt;a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html"&gt;4&lt;/a&gt;
+&lt;a href="http://developer.apple.com/swift/blog/#article-28"&gt;5&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href="https://developer.apple.com/swift/blog/?id=28" title="Permalink to Memory Safety: Ensuring Values are Defined Before Use - Swift Blog"&gt;Source&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title>Soon ...</title><description>&lt;p&gt;Yo, just have to write bunches of articles but ... soon ... &lt;/p&gt;</description><link>http://localhost:2368/soon-page/</link><guid isPermaLink="false">bfa7922d-4646-4804-bc6d-14272691dbde</guid><category>Getting Started</category><dc:creator>Julien Gdt</dc:creator><pubDate>Tue, 26 May 2015 08:04:15 GMT</pubDate><media:content url="http://localhost:2368/content/images/2015/05/enhanced-buzz-28895-1301694293-0.jpg" medium="image"/><content:encoded>&lt;img src="http://localhost:2368/content/images/2015/05/enhanced-buzz-28895-1301694293-0.jpg" alt="Soon ..."&gt;&lt;p&gt;Yo, just have to write bunches of articles but ... soon ... &lt;/p&gt;</content:encoded></item></channel></rss>

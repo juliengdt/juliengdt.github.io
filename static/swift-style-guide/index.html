@@ -1,0 +1,716 @@
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Swift Style Guide</title>
+	<meta name="description" content="">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<link rel="shortcut icon" href="../favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="../assets/styles/build/style.css?v=1ce4e9d1a8">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen:400,700">
+	
+	
+	
+
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Julien Gdt">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Swift Style Guide">
+    <meta property="og:description" content="This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and...">
+    <meta property="og:url" content="http://localhost:2368/swift-style-guide/">
+    <meta property="og:image" content="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png">
+    <meta property="article:published_time" content="2015-05-27T07:31:52.748Z">
+    <meta property="article:modified_time" content="2015-05-27T07:31:52.725Z">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Swift Style Guide">
+    <meta name="twitter:description" content="This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and...">
+    <meta name="twitter:url" content="http://localhost:2368/swift-style-guide/">
+    <meta name="twitter:image:src" content="http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Julien Gdt",
+    "author": {
+        "@type": "Person",
+        "name": "Julien Gdt",
+        "image": "http://localhost:2368/content/images/2015/05/jlngdt_rounded.png",
+        "url": "http://localhost:2368/author/julien",
+        "sameAs": "http://juliengdt.github.io/github-resume/",
+        "description": null
+    },
+    "headline": "Swift Style Guide",
+    "url": "http://localhost:2368/swift-style-guide/",
+    "datePublished": "2015-05-27T07:31:52.748Z",
+    "dateModified": "2015-05-27T07:31:52.725Z",
+    "image": "http://localhost:2368/content/images/2015/05/Logo_Apple_Swift.png",
+    "description": "This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.6">
+    <link rel="alternate" type="application/rss+xml" title="Julien Gdt" href="../rss/index.html">
+</head>
+<body class="post-template
+	&gt;
+	
+	&lt;div class=" site-main>
+
+<header class="site-header">
+	<a href="../"><img class="blog-logo" src="../content/images/2015/05/Decode-for-Ghost-1-1.svg" alt="Blog Logo"></a>
+	<h1 class="blog-title"><a href="../">Julien Gdt</a></h1>
+	<h2 class="blog-description">Yo. I'm coding on iOS, and you ?</h2>
+	
+	<ul class="nav">
+    <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+</ul>
+</header>
+
+<main class="site-content" role="main">
+
+	<article class="post">
+			
+
+
+			<header class="post-header">
+				<a href="index.html"><img class="post-image" src="../content/images/2015/05/Logo_Apple_Swift.png"></a>
+				<h1 class="post-title">Swift Style Guide</h1>
+				<span class="post-meta">Posted on <time datetime="2015-05-27">27 May 2015</time></span>
+			</header>
+
+			<section class="post-content">
+				<p>This style guide is different from others you may see, because the focus is centered on readability for print and the web. We created this style guide to keep the code in our books, tutorials, and starter kits nice and consistent — even though we have many different authors working on the books.</p>
+
+<p>Our overarching goals are conciseness, readability, and simplicity.</p>
+
+<p>Writing Objective-C? Check out our <a href="https://github.com/raywenderlich/objective-c-style-guide">Objective-C Style Guide</a> too.</p>
+
+<h2 id="tableofcontents">Table of Contents</h2>
+
+<ul>
+<li><a href="index.html#naming">Naming</a>
+<ul><li><a href="index.html#prose">Prose</a></li>
+<li><a href="index.html#class-prefixes">Class Prefixes</a></li></ul></li>
+<li><a href="index.html#spacing">Spacing</a></li>
+<li><a href="index.html#comments">Comments</a></li>
+<li><a href="index.html#classes-and-structures">Classes and Structures</a>
+<ul><li><a href="index.html#use-of-self">Use of Self</a></li>
+<li><a href="index.html#protocol-conformance">Protocol Conformance</a></li>
+<li><a href="index.html#computed-properties">Computed Properties</a></li></ul></li>
+<li><a href="index.html#function-declarations">Function Declarations</a></li>
+<li><a href="index.html#closure-expressions">Closure Expressions</a></li>
+<li><a href="index.html#types">Types</a>
+<ul><li><a href="index.html#constants">Constants</a></li>
+<li><a href="index.html#optionals">Optionals</a></li>
+<li><a href="index.html#struct-initializers">Struct Initializers</a></li>
+<li><a href="index.html#type-inference">Type Inference</a></li>
+<li><a href="index.html#syntactic-sugar">Syntactic Sugar</a></li></ul></li>
+<li><a href="index.html#control-flow">Control Flow</a></li>
+<li><a href="index.html#semicolons">Semicolons</a></li>
+<li><a href="index.html#language">Language</a></li>
+<li><a href="index.html#smiley-face">Smiley Face</a></li>
+<li><a href="index.html#credits">Credits</a></li>
+</ul>
+
+<h2 id="naming">Naming</h2>
+
+<p>Use descriptive names with camel case for classes, methods, variables, etc. Class names should be capitalized, while method names and variables should start with a lower case letter.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">private let maximumWidgetCount = 100
+
+class WidgetContainer {  
+  var widgetButton: UIButton
+  let widgetHeightPercentage = 0.85
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let MAX_WIDGET_COUNT = 100
+
+class app_widgetContainer {  
+  var wBut: UIButton
+  let wHeightPct = 0.85
+}
+</code></pre>
+
+<p>For functions and init methods, prefer named parameters for all arguments unless the context is very clear. Include external parameter names if it makes function calls more readable.</p>
+
+<pre><code class="language-swift">func dateFromString(dateString: String) -&gt; NSDate  
+func convertPointAt(#column: Int, #row: Int) -&gt; CGPoint  
+func timedAction(#delay: NSTimeInterval, perform action: SKAction) -&gt; SKAction!
+
+// would be called like this:
+dateFromString("2014-03-14")  
+convertPointAt(column: 42, row: 13)  
+timedAction(delay: 1.0, perform: someOtherAction)  
+</code></pre>
+
+<p>For methods, follow the standard Apple convention of referring to the first parameter in the method name:</p>
+
+<pre><code class="language-swift">class Guideline {  
+  func combineWithString(incoming: String, options: Dictionary?) { ... }
+  func upvoteBy(amount: Int) { ... }
+}
+</code></pre>
+
+<h3 id="enumerations">Enumerations</h3>
+
+<p>Use UpperCamelCase for enumeration values:</p>
+
+<pre><code class="language-swift">enum Shape {  
+  case Rectangle
+  case Square
+  case Triangle
+  case Circle
+}
+</code></pre>
+
+<h3 id="prose">Prose</h3>
+
+<p>When referring to functions in prose (tutorials, books, comments) include the required parameter names from the caller's perspective or <code>_</code> for unnamed parameters.</p>
+
+<blockquote>
+  <p>Call <code>convertPointAt(column:row:)</code> from your own <code>init</code> implementation.</p>
+  
+  <p>If you call <code>dateFromString(_:)</code> make sure that you provide a string with the format "yyyy-MM-dd".</p>
+  
+  <p>If you call <code>timedAction(delay:perform:)</code> from <code>viewDidLoad()</code> remember to provide an adjusted delay value and an action to perform.</p>
+  
+  <p>You shouldn't call the data source method <code>tableView(_:cellForRowAtIndexPath:)</code> directly.</p>
+</blockquote>
+
+<p>When in doubt, look at how Xcode lists the method in the jump bar – our style here matches that.</p>
+
+<p><img src="../content/images/2015/05/xcode-jump-bar.png" alt="Methods in Xcode jump bar"></p>
+
+<h3 id="classprefixes">Class Prefixes</h3>
+
+<p>Swift types are automatically namespaced by the module that contains them and you should not add a class prefix. If two names from different modules collide you can disambiguate by prefixing the type name with the module name.</p>
+
+<pre><code class="language-swift">import SomeModule
+
+let myClass = MyModule.UsefulClass()  
+</code></pre>
+
+<h2 id="spacing">Spacing</h2>
+
+<ul>
+<li><p>Indent using 2 spaces rather than tabs to conserve space and help prevent line wrapping. Be sure to set this preference in Xcode as shown below:</p>
+
+<p><img src="../content/images/2015/05/indentation.png" alt="Xcode indent settings" title=""></p></li>
+<li><p>Method braces and other braces (<code>if</code>/<code>else</code>/<code>switch</code>/<code>while</code> etc.) always open on the same line as the statement but close on a new line.</p></li>
+<li>Tip: You can re-indent by selecting some code (or ⌘A to select all) and then Control-I (or Editor\Structure\Re-Indent in the menu). Some of the Xcode template code will have 4-space tabs hard coded, so this is a good way to fix that.</li>
+</ul>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">if user.isHappy {  
+  // Do something
+} else {
+  // Do something else
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">if user.isHappy  
+{
+    // Do something
+}
+else {  
+    // Do something else
+}
+</code></pre>
+
+<ul>
+<li>There should be exactly one blank line between methods to aid in visual clarity and organization. Whitespace within methods should separate functionality, but having too many sections in a method often means you should refactor into several methods.</li>
+</ul>
+
+<h2 id="comments">Comments</h2>
+
+<p>When they are needed, use comments to explain <strong>why</strong> a particular piece of code does something. Comments must be kept up-to-date or deleted.</p>
+
+<p>Avoid block comments inline with code, as the code should be as self-documenting as possible. <em>Exception: This does not apply to those comments used to generate documentation.</em></p>
+
+<h2 id="classesandstructures">Classes and Structures</h2>
+
+<h3 id="whichonetouse">Which one to use?</h3>
+
+<p>Remember, structs have <a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_144">value semantics</a>. Use structs for things that do not have an identity. An array that contains [a, b, c] is really the same as another array that contains [a, b, c] and they are completely interchangeable. It doesn't matter whether you use the first array or the second, because they represent the exact same thing. That's why arrays are structs.</p>
+
+<p>Classes have <a href="https://developer.apple.com/library/mac/documentation/Swift/Conceptual/Swift_Programming_Language/ClassesAndStructures.html#//apple_ref/doc/uid/TP40014097-CH13-XID_145">reference semantics</a>. Use classes for things that do have an identity or a specific life cycle. You would model a person as a class because two person objects are two different things. Just because two people have the same name and birthdate, doesn't mean they are the same person. But the person's birthdate would be a struct because a date of 3 March 1950 is the same as any other date object for 3 March 1950. The date itself doesn't have an identity.</p>
+
+<p>Sometimes, things should be structs but need to conform to <code>AnyObject</code> or are historically modeled as classes already (<code>NSDate</code>, <code>NSSet</code>). Try to follow these guidelines as closely as possible.</p>
+
+<h3 id="exampledefinition">Example definition</h3>
+
+<p>Here's an example of a well-styled class definition:</p>
+
+<pre><code class="language-swift">class Circle: Shape {  
+  var x: Int, y: Int
+  var radius: Double
+  var diameter: Double {
+    get {
+      return radius * 2
+    }
+    set {
+      radius = newValue / 2
+    }
+  }
+
+  init(x: Int, y: Int, radius: Double) {
+    self.x = x
+    self.y = y
+    self.radius = radius
+  }
+
+  convenience init(x: Int, y: Int, diameter: Double) {
+    self.init(x: x, y: y, radius: diameter / 2)
+  }
+
+  func describe() -&gt; String {
+    return "I am a circle at \(centerString()) with an area of \(computeArea())"
+  }
+
+  override func computeArea() -&gt; Double {
+    return M_PI * radius * radius
+  }
+
+  private func centerString() -&gt; String {
+    return "(\(x),\(y))"
+  }
+}
+</code></pre>
+
+<p>The example above demonstrates the following style guidelines:</p>
+
+<ul>
+<li>Specify types for properties, variables, constants, argument declarations and other statements with a space after the colon but not before, e.g. <code>x: Int</code>, and <code>Circle: Shape</code>.</li>
+<li>Define multiple variables and structures on a single line if they share a common purpose / context.</li>
+<li>Indent getter and setter definitions and property observers.</li>
+<li>Don't add modifiers such as <code>internal</code> when they're already the default. Similarly, don't repeat the access modifier when overriding a method.</li>
+</ul>
+
+<h3 id="useofself">Use of Self</h3>
+
+<p>For conciseness, avoid using <code>self</code> since Swift does not require it to access an object's properties or invoke its methods.</p>
+
+<p>Use <code>self</code> when required to differentiate between property names and arguments in initializers, and when referencing properties in closure expressions (as required by the compiler):</p>
+
+<pre><code class="language-swift">class BoardLocation {  
+  let row: Int, column: Int
+
+  init(row: Int, column: Int) {
+    self.row = row
+    self.column = column
+
+    let closure = {
+      println(self.row)
+    }
+  }
+}
+</code></pre>
+
+<h3 id="protocolconformance">Protocol Conformance</h3>
+
+<p>When adding protocol conformance to a class, prefer adding a separate class extension for the protocol methods. This keeps the related methods grouped together with the protocol and can simplify instructions to add a protocol to a class with its associated methods.</p>
+
+<p>Also, don't forget the <code>// MARK: -</code> comment to keep things well-organized!</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">class MyViewcontroller: UIViewController {  
+  // class stuff here
+}
+
+// MARK: - UITableViewDataSource
+extension MyViewcontroller: UITableViewDataSource {  
+  // table view data source methods
+}
+
+// MARK: - UIScrollViewDelegate
+extension MyViewcontroller: UIScrollViewDelegate {  
+  // scroll view delegate methods
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">class MyViewcontroller: UIViewController, UITableViewDataSource, UIScrollViewDelegate {  
+  // all methods
+}
+</code></pre>
+
+<h3 id="computedproperties">Computed Properties</h3>
+
+<p>For conciseness, if a computed property is read-only, omit the get clause. The get clause is required only when a set clause is provided.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">var diameter: Double {  
+  return radius * 2
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">var diameter: Double {  
+  get {
+    return radius * 2
+  }
+}
+</code></pre>
+
+<h2 id="functiondeclarations">Function Declarations</h2>
+
+<p>Keep short function declarations on one line including the opening brace:</p>
+
+<pre><code class="language-swift">func reticulateSplines(spline: [Double]) -&gt; Bool {  
+  // reticulate code goes here
+}
+</code></pre>
+
+<p>For functions with long signatures, add line breaks at appropriate points and add an extra indent on subsequent lines:</p>
+
+<pre><code class="language-swift">func reticulateSplines(spline: [Double], adjustmentFactor: Double,  
+    translateConstant: Int, comment: String) -&gt; Bool {
+  // reticulate code goes here
+}
+</code></pre>
+
+<h2 id="closureexpressions">Closure Expressions</h2>
+
+<p>Use trailing closure syntax only if there's a single closure expression parameter at the end of the argument list. Give the closure parameters descriptive names.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">UIView.animateWithDuration(1.0) {  
+  self.myView.alpha = 0
+}
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  },
+  completion: { finished in
+    self.myView.removeFromSuperview()
+  }
+)
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">UIView.animateWithDuration(1.0, animations: {  
+  self.myView.alpha = 0
+})
+
+UIView.animateWithDuration(1.0,  
+  animations: {
+    self.myView.alpha = 0
+  }) { f in
+    self.myView.removeFromSuperview()
+}
+</code></pre>
+
+<p>For single-expression closures where the context is clear, use implicit returns:</p>
+
+<pre><code class="language-swift">attendeeList.sort { a, b in  
+  a &gt; b
+}
+</code></pre>
+
+<h2 id="types">Types</h2>
+
+<p>Always use Swift's native types when available. Swift offers bridging to Objective-C so you can still use the full set of methods as needed.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">let width = 120.0                                    // Double  
+let widthString = (width as NSNumber).stringValue    // String  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let width: NSNumber = 120.0                          // NSNumber  
+let widthString: NSString = width.stringValue        // NSString  
+</code></pre>
+
+<p>In Sprite Kit code, use <code>CGFloat</code> if it makes the code more succinct by avoiding too many conversions.</p>
+
+<h3 id="constants">Constants</h3>
+
+<p>Constants are defined using the <code>let</code> keyword, and variables with the <code>var</code> keyword. Always use <code>let</code> instead of <code>var</code> if the value of the variable will not change.</p>
+
+<p><strong>Tip:</strong> A good technique is to define everything using <code>let</code> and only change it to <code>var</code> if the compiler complains!</p>
+
+<h3 id="optionals">Optionals</h3>
+
+<p>Declare variables and function return types as optional with <code>?</code> where a nil value is acceptable.</p>
+
+<p>Use implicitly unwrapped types declared with <code>!</code> only for instance variables that you know will be initialized later before use, such as subviews that will be set up in <code>viewDidLoad</code>.</p>
+
+<p>When accessing an optional value, use optional chaining if the value is only accessed once or if there are many optionals in the chain:</p>
+
+<pre><code class="language-swift">self.textContainer?.textLabel?.setNeedsDisplay()  
+</code></pre>
+
+<p>Use optional binding when it's more convenient to unwrap once and perform multiple operations:</p>
+
+<pre><code class="language-swift">if let textContainer = self.textContainer {  
+  // do many things with textContainer
+}
+</code></pre>
+
+<p>When naming optional variables and properties, avoid naming them like <code>optionalString</code> or <code>maybeView</code> since their optional-ness is already in the type declaration.</p>
+
+<p>For optional binding, shadow the original name when appropriate rather than using names like <code>unwrappedView</code> or <code>actualLabel</code>.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">var subview: UIView?  
+var volume: Double?
+
+// later on...
+if let subview = subview, volume = volume {  
+  // do something with unwrapped subview and volume
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">var optionalSubview: UIView?  
+var volume: Double?
+
+if let unwrappedSubview = optionalSubview {  
+  if let realVolume = volume {
+    // do something with unwrappedSubview and realVolume
+  }
+}
+</code></pre>
+
+<h3 id="structinitializers">Struct Initializers</h3>
+
+<p>Use the native Swift struct initializers rather than the legacy CGGeometry constructors.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">let bounds = CGRect(x: 40, y: 20, width: 120, height: 80)  
+let centerPoint = CGPoint(x: 96, y: 42)  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let bounds = CGRectMake(40, 20, 120, 80)  
+let centerPoint = CGPointMake(96, 42)  
+</code></pre>
+
+<p>Prefer the struct-scope constants <code>CGRect.infiniteRect</code>, <code>CGRect.nullRect</code>, etc. over global constants <code>CGRectInfinite</code>, <code>CGRectNull</code>, etc. For existing variables, you can use the shorter <code>.zeroRect</code>.</p>
+
+<h3 id="typeinference">Type Inference</h3>
+
+<p>Prefer compact code and let the compiler infer the type for a constant or variable, unless you need a specific type other than the default such as <code>CGFloat</code> or <code>Int16</code>.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">let message = "Click the button"  
+let currentBounds = computeViewBounds()  
+var names = [String]()  
+let maximumWidth: CGFloat = 106.5  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let message: String = "Click the button"  
+let currentBounds: CGRect = computeViewBounds()  
+var names: [String] = []  
+</code></pre>
+
+<p><strong>NOTE</strong>: Following this guideline means picking descriptive names is even more important than before.</p>
+
+<h3 id="syntacticsugar">Syntactic Sugar</h3>
+
+<p>Prefer the shortcut versions of type declarations over the full generics syntax.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">var deviceModels: [String]  
+var employees: [Int: String]  
+var faxNumber: Int?  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">var deviceModels: Array&lt;String&gt;  
+var employees: Dictionary&lt;Int, String&gt;  
+var faxNumber: Optional&lt;Int&gt;  
+</code></pre>
+
+<h2 id="controlflow">Control Flow</h2>
+
+<p>Prefer the <code>for-in</code> style of <code>for</code> loop over the <code>for-condition-increment</code> style.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">for _ in 0..&lt;3 {  
+  println("Hello three times")
+}
+
+for (index, person) in enumerate(attendeeList) {  
+  println("\(person) is at position #\(index)")
+}
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">for var i = 0; i &lt; 3; i++ {  
+  println("Hello three times")
+}
+
+for var i = 0; i &lt; attendeeList.count; i++ {  
+  let person = attendeeList[i]
+  println("\(person) is at position #\(i)")
+}
+</code></pre>
+
+<h2 id="semicolons">Semicolons</h2>
+
+<p>Swift does not require a semicolon after each statement in your code. They are only required if you wish to combine multiple statements on a single line.</p>
+
+<p>Do not write multiple statements on a single line separated with semicolons.</p>
+
+<p>The only exception to this rule is the <code>for-conditional-increment</code> construct, which requires semicolons. However, alternative <code>for-in</code> constructs should be used where possible.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">let swift = "not a scripting language"  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let swift = "not a scripting language";  
+</code></pre>
+
+<p><strong>NOTE</strong>: Swift is very different to JavaScript, where omitting semicolons is <a href="http://stackoverflow.com/questions/444080/do-you-recommend-using-semicolons-after-every-statement-in-javascript">generally considered unsafe</a></p>
+
+<h2 id="language">Language</h2>
+
+<p>Use US English spelling to match Apple's API.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code class="language-swift">let color = "red"  
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code class="language-swift">let colour = "red"  
+</code></pre>
+
+<h2 id="smileyface">Smiley Face</h2>
+
+<p>Smiley faces are a very prominent style feature of the raywenderlich.com site! It is very important to have the correct smile signifying the immense amount of happiness and excitement for the coding topic. The closing square bracket <code>]</code> is used because it represents the largest smile able to be captured using ASCII art. A closing parenthesis <code>)</code> creates a half-hearted smile, and thus is not preferred.</p>
+
+<p><strong>Preferred:</strong></p>
+
+<pre><code>:]
+</code></pre>
+
+<p><strong>Not Preferred:</strong></p>
+
+<pre><code>:)
+</code></pre>
+
+<h2 id="creditsandsources">Credits and sources</h2>
+
+<p>This style guide is a collaborative effort from the most stylish raywenderlich.com team members: </p>
+
+<ul>
+<li><a href="https://github.com/jawwad">Jawwad Ahmad</a></li>
+<li><a href="https://github.com/moayes">Soheil Moayedi Azarpour</a></li>
+<li><a href="https://github.com/Scott90">Scott Berrevoets</a></li>
+<li><a href="https://github.com/ecerney">Eric Cerney</a></li>
+<li><a href="https://github.com/sammyd">Sam Davies</a></li>
+<li><a href="https://github.com/edekhayser">Evan Dekhayser</a></li>
+<li><a href="https://github.com/pdistler">Jean-Pierre Distler</a></li>
+<li><a href="https://github.com/ColinEberhardt">Colin Eberhardt</a></li>
+<li><a href="https://github.com/gregheo">Greg Heo</a></li>
+<li><a href="https://github.com/hollance">Matthijs Hollemans</a></li>
+<li><a href="https://github.com/eskerber">Erik Kerber</a></li>
+<li><a href="https://github.com/elephantronic">Christopher LaPollo</a></li>
+<li><a href="https://github.com/benmorrow">Ben Morrow</a></li>
+<li><a href="https://github.com/macandyp">Andy Pereira</a></li>
+<li><a href="https://github.com/rnystrom">Ryan Nystrom</a></li>
+<li><a href="https://github.com/funkyboy">Cesare Rocchi</a></li>
+<li><a href="https://github.com/designatednerd">Ellen Shapiro</a></li>
+<li><a href="https://github.com/icanzilb">Marin Todorov</a></li>
+<li><a href="https://github.com/cwagdev">Chris Wagner</a></li>
+<li><a href="https://github.com/rwenderlich">Ray Wenderlich</a></li>
+<li><a href="https://github.com/jackwu95">Jack Wu</a></li>
+</ul>
+
+<p>Hat tip to <a href="https://github.com/ndubbs">Nicholas Waynik</a> and the <a href="https://github.com/raywenderlich/objective-c-style-guide">Objective-C Style Guide</a> team!</p>
+
+<p>We also drew inspiration from Apple’s reference material on Swift:</p>
+
+<ul>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/swift/conceptual/swift_programming_language/index.html">The Swift Programming Language</a></li>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/Swift/Conceptual/BuildingCocoaApps/index.html">Using Swift with Cocoa and Objective-C</a></li>
+<li><a href="https://developer.apple.com/library/prerelease/ios/documentation/General/Reference/SwiftStandardLibraryReference/index.html">Swift Standard Library Reference</a></li>
+</ul>
+
+<p>--&gt; <a href="https://github.com/raywenderlich/swift-style-guide">SOURCES</a> &lt;--</p>
+			</section>
+
+			<footer class="post-footer">
+					<section class="author-card cf">
+							<figure class="author-image">					
+								<a href="../author/julien/"><img src="../content/images/2015/05/jlngdt_rounded.png" alt="Julien Gdt's Image"></a>
+							</figure>
+						<div class="author-meta">
+							 <a class="author-name" href="../author/julien/">Julien Gdt
+							 </a><a href="http://juliengdt.github.io/github-resume/" class="author-website" rel="author">Website</a>
+							 <div class="author-location">Lyon - FR</div>
+							 
+						</div>
+					</section>
+
+			</footer>
+	</article>
+	
+	<aside class="post-navigation cf">
+			<div class="nav-next">
+				<a href="../resume/">Resume</a>
+			</div>
+			<div class="nav-previous">
+				<a href="../swift-memory-safety/">Memory Safety: Ensuring Values are Defined Before Use</a>
+			</div>
+	</aside>
+
+</main>
+
+
+	<footer class="site-footer">
+		<a class="subscribe icon-feed" href="../rss/index.rss"><span class="tooltip">RSS</span></a>
+		<div class="inner">
+			 <section class="copyright">All content copyright <a href="../">Julien Gdt</a> © 2015 • All rights reserved.</section>
+			 <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+			 <section class="themeinfo"><a href="http://scotthsmith.com/projects/decode/">Decode</a> by <a href="http://scotthsmith.com">Scott Smith</a></section>
+		</div>
+	</footer>
+
+ 
+  
+
+	<script src="../public/jquery.js?v=1ce4e9d1a8"></script>
+	<script src="../assets/scripts/build/main.js?v=1ce4e9d1a8"></script>
+</body>

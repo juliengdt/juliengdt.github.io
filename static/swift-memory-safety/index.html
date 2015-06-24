@@ -1,0 +1,197 @@
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<title>Julien Gdt - Swift Memory Safety</title>
+	<meta name="description" content="">
+	<meta name="HandheldFriendly" content="True">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+	<link rel="shortcut icon" href="../favicon.ico">
+
+	<link rel="stylesheet" type="text/css" href="../assets/styles/build/style.css?v=1ce4e9d1a8">
+	<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Oxygen:400,700">
+	
+	
+	
+
+    <link rel="canonical" href="index.html">
+    
+    <meta property="og:site_name" content="Julien Gdt">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Julien Gdt - Swift Memory Safety">
+    <meta property="og:description" content="A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that...">
+    <meta property="og:url" content="http://localhost:2368/swift-memory-safety/">
+    <meta property="article:published_time" content="2015-05-27T06:49:37.031Z">
+    <meta property="article:modified_time" content="2015-05-27T06:55:10.504Z">
+    
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Julien Gdt - Swift Memory Safety">
+    <meta name="twitter:description" content="A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that...">
+    <meta name="twitter:url" content="http://localhost:2368/swift-memory-safety/">
+    
+    <script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "publisher": "Julien Gdt",
+    "author": {
+        "@type": "Person",
+        "name": "Julien Gdt",
+        "image": "http://localhost:2368/content/images/2015/05/jlngdt_rounded.png",
+        "url": "http://localhost:2368/author/julien",
+        "sameAs": "http://juliengdt.github.io/github-resume/",
+        "description": null
+    },
+    "headline": "Julien Gdt - Swift Memory Safety",
+    "url": "http://localhost:2368/swift-memory-safety/",
+    "datePublished": "2015-05-27T06:49:37.031Z",
+    "dateModified": "2015-05-27T06:55:10.504Z",
+    "description": "A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that..."
+}
+    </script>
+
+    <meta name="generator" content="Ghost 0.6">
+    <link rel="alternate" type="application/rss+xml" title="Julien Gdt" href="../rss/index.html">
+</head>
+<body class="post-template
+	&gt;
+	
+	&lt;div class=" site-main>
+
+<header class="site-header">
+	<a href="../"><img class="blog-logo" src="../content/images/2015/05/Decode-for-Ghost-1-1.svg" alt="Blog Logo"></a>
+	<h1 class="blog-title"><a href="../">Julien Gdt</a></h1>
+	<h2 class="blog-description">Yo. I'm coding on iOS, and you ?</h2>
+	
+	<ul class="nav">
+    <li class="nav-home" role="presentation"><a href="../">Home</a></li>
+</ul>
+</header>
+
+<main class="site-content" role="main">
+
+	<article class="post">
+			
+
+
+			<header class="post-header">
+				
+				<h1 class="post-title">Memory Safety: Ensuring Values are Defined Before Use</h1>
+				<span class="post-meta">Posted on <time datetime="2015-05-27">27 May 2015</time></span>
+			</header>
+
+			<section class="post-content">
+				<p>A primary focus when designing Swift was improving the memory safety of the programming model. There are a lot of aspects of memory safety, so this post will start slow and cover a simple case: how to make sure that variables are initialized with a value before they are used.</p>
+
+<h3 id="theswiftapproach">The Swift Approach</h3>
+
+<p>Variables are considered "safe" when the developer can be sure that there will be a valid value ready to use before any code tries to access it. Languages take several different approaches to this kind of safety. Some, like C, put the burden entirely on the programmer to employ safe programming techniques — a powerful approach, but riddled with risk. C++ and Objective-C improve the situation by enforcing some mandatory patterns, while other languages take extreme measures by requiring initialization at the point of definition.</p>
+
+<p>The primary technique employed by Swift is to use our advanced compiler to perform dataflow analysis of the code. The compiler then enforces that each variable was initialized before it is used, a strategy known as [Definitive Initialization][1]. Languages such as Java and C# (among others) are known to also employ this technique. Swift uses an extended version of this approach for a broad range of variables.</p>
+
+<p>Note: The bottom of this post includes information about other techniques, most of which Swift also employs to some degree.</p>
+
+<h3 id="definitiveinitializationoflocalvariables">Definitive Initialization of Local Variables</h3>
+
+<p>Swift applies the rules of definitive initialization in many contexts, but the simplest use is for local variables. Definitive initialization gives you more flexibility than a "implicit default initialization" rule (<em>see below</em>) would, because it allows you to write this code:</p>
+
+<pre><code>var myInstance : MyClass
+
+if x &gt; 42 {
+    myInstance = MyClass(intValue: 13)
+} else {
+    myInstance = MyClass(floatValue: 92.3)
+}
+
+myInstance.printIt()
+</code></pre>
+
+<p>Here the compiler can prove that both sides of the if statement are guaranteed to initialize myInstance, which proves that the method call can't use uninitialized memory.</p>
+
+<p>Definitive initialization is a powerful approach, but it is only really useful if it is reliable and predictable. One place that this can lead to surprise is when you have more complex control flow, for example like this:</p>
+
+<pre><code>var myInstance : MyClass
+
+if x &gt; 10 {
+    myInstance = MyClass(intValue: 13)
+}
+
+if x &gt; 42 {
+    myInstance.printIt()
+}
+</code></pre>
+
+<p>In this case, the compiler will tell you: "Variable <strong>myInstance</strong> used before initialized" on the call to printIt(). This is because the compiler does not track the correlation between the predicates in the if conditions. While we could teach the compiler to handle individual specific cases like this one, it is impossible to handle all cases (doing so is equivalent to the [halting problem][2]) so we opted to keep the compiler's rules simple and predictable.</p>
+
+<p>Swift makes it extremely easy to initialize a variable. In fact, it is shorter to declare a variable as var x = 0 giving the variable the initial value 0 than it is to declare the uninitialized variable var x : Int. Swift favors explicitness of initialization whenever possible. There are also more powerful ways to initialize a variable when the situation calls for it using init(). For comprehensive information you can read the chapter "[Initialization][3]" in The Swift Programming Language.</p>
+
+<h3 id="otherapproaches">Other Approaches</h3>
+
+<p>In addition to definitive initialization, Swift also employs additional approaches in focused areas of the language. You may have used these techniques in other languages, so we wanted to cover them briefly in this post. Each has some drawbacks, so they aren't used as Swift's primary approach:</p>
+
+<p><strong>Leave safety to the programmer:</strong> Given the prevalence of C, it was important to understand the pros and cons of simply leaving safety up to the developer. Unfortunately, use of an uninitialized value in C produces [undefined behavior][4], often leading to runtime explosions. C relies on the programmer to never make a mistake. Given that our goal was to make Swift "safe by default," this approach was quickly discarded for general use. However, APIs like UnsafePointer allow you to explicitly opt-in to unsafety when this power is absolutely necessary.</p>
+
+<p><strong>Implicit Default Initialization:</strong> Values could be ensured to be safe by having the compiler implicitly initialize them, for example by setting a "zero value" like Objective-C does for instance variables, or by running default initializers like in C++. We explored this approach in depth, but ultimately decided against its broad use because:
+* This doesn't work for cases that have no legal initial value, e.g. protocols with no init() requirement, and non-nullable references to classes, which are pervasive in Swift.
+* Even for primitive types like integers 0 is often the wrong value. That's one reason setting the initial value is so easy in Swift. This also makes the code more obvious for those who will maintain it, as well as defining away a potential error of omission, e.g. when -1 is the right sentinel to use.</p>
+
+<p>Note that default initialization to nil is clearly the right answer for nullable values so all values of Optional and ImplicitlyUnwrappedOptional type automatically initialize to nil by default.</p>
+
+<p><strong>Require an initializer at definition.</strong> Put the burden on the developer to always provide an initial value at the time the variable is defined, meaning that var x : Int would be illegal without an initializer. While this is a common approach among functional languages, we considered this to be too heavy of a requirement because it enforces a very strict programming style, which gets in the way of expressing natural patterns.</p>
+
+<hr>
+
+<p><a href="http://en.wikipedia.org/wiki/Definite_assignment_analysis">1</a>
+<a href="http://en.wikipedia.org/wiki/Halting_problem">2</a>
+<a href="https://developer.apple.com/library/ios/documentation/Swift/Conceptual/Swift_Programming_Language/Initialization.html">3</a>
+<a href="http://blog.llvm.org/2011/05/what-every-c-programmer-should-know.html">4</a>
+<a href="http://developer.apple.com/swift/blog/#article-28">5</a></p>
+
+<p><a href="https://developer.apple.com/swift/blog/?id=28" title="Permalink to Memory Safety: Ensuring Values are Defined Before Use - Swift Blog">Source</a></p>
+			</section>
+
+			<footer class="post-footer">
+					<section class="author-card cf">
+							<figure class="author-image">					
+								<a href="../author/julien/"><img src="../content/images/2015/05/jlngdt_rounded.png" alt="Julien Gdt's Image"></a>
+							</figure>
+						<div class="author-meta">
+							 <a class="author-name" href="../author/julien/">Julien Gdt
+							 </a><a href="http://juliengdt.github.io/github-resume/" class="author-website" rel="author">Website</a>
+							 <div class="author-location">Lyon - FR</div>
+							 
+						</div>
+					</section>
+
+			</footer>
+	</article>
+	
+	<aside class="post-navigation cf">
+			<div class="nav-next">
+				<a href="../swift-style-guide/">Swift Style Guide</a>
+			</div>
+			<div class="nav-previous">
+				<a href="../soon-page/">Soon ...</a>
+			</div>
+	</aside>
+
+</main>
+
+
+	<footer class="site-footer">
+		<a class="subscribe icon-feed" href="../rss/index.rss"><span class="tooltip">RSS</span></a>
+		<div class="inner">
+			 <section class="copyright">All content copyright <a href="../">Julien Gdt</a> © 2015 • All rights reserved.</section>
+			 <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+			 <section class="themeinfo"><a href="http://scotthsmith.com/projects/decode/">Decode</a> by <a href="http://scotthsmith.com">Scott Smith</a></section>
+		</div>
+	</footer>
+
+ 
+  
+
+	<script src="../public/jquery.js?v=1ce4e9d1a8"></script>
+	<script src="../assets/scripts/build/main.js?v=1ce4e9d1a8"></script>
+</body>
